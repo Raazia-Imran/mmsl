@@ -311,7 +311,29 @@ export const schemaTypes = [
     url("url", "DOI or publication URL"),
     ...common,
   ]),
-  schema("achievement", "Achievement or news item", [
+  schema("newsItem", "News item", [
+    defineField({
+      name: "placeholder",
+      title: "Show as an empty card until content is ready",
+      type: "boolean",
+      initialValue: false,
+    }),
+    text("title", "News headline", {
+      validation: (Rule) =>
+        Rule.custom((value, context) =>
+          context.document?.placeholder || value?.trim()
+            ? true
+            : "Enter a headline or enable the empty card option.",
+        ),
+    }),
+    area("description", "News details"),
+    defineField({ name: "date", title: "Publication date", type: "date" }),
+    image("cover", "News cover image"),
+    text("coverAlt", "Cover image description"),
+    url("storyUrl", "Full story link"),
+    ...common,
+  ]),
+  schema("achievement", "Achievement", [
     text("title", "Achievement", { validation: required }),
     area("description", "Additional details"),
     defineField({ name: "date", title: "Publication date", type: "date" }),

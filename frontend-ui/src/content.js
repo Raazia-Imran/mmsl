@@ -16,7 +16,7 @@ export const routeNames = {
   "/about/": "About Us",
   "/services/": "Services",
   "/papers/": "Research Papers",
-  "/achievements/": "Achievements & News",
+  "/achievements/": "Lab Highlights",
   "/collaborators/": "Collaborators",
   "/contact/": "Contact Us",
   "/privacy/": "Privacy Notice",
@@ -86,9 +86,14 @@ export function normalizeContent(data) {
     copy: data.copy || [],
     expertise: Array.isArray(data.expertise) ? data.expertise : [],
     ...Object.fromEntries(
-      ["projects", "publications", "achievements", "partners", "resources"].map(
-        (key) => [key, Array.isArray(data[key]) ? data[key] : []],
-      ),
+      [
+        "projects",
+        "publications",
+        "achievements",
+        "news",
+        "partners",
+        "resources",
+      ].map((key) => [key, Array.isArray(data[key]) ? data[key] : []]),
     ),
   };
 }
@@ -111,6 +116,7 @@ export async function fetchContent(projectId, dataset = "production", signal) {
     "home": *[_type == "homePage" && _id == "homePage"][0]{...,heroImage{${imageProjection}}},
     "projects": *[_type == "project"] | order(order asc, _id asc){...,image{${imageProjection}}},
     "publications": *[_type == "publication"] | order(order asc, _id asc){...,"pdfUrl":pdf.asset->url},
+    "news": *[_type == "newsItem"] | order(date desc, order asc, _id asc){...,cover{${imageProjection}}},
     "achievements": *[_type == "achievement"] | order(date desc, order asc, _id asc){...,cover{${imageProjection}}},
     "partners": *[_type == "partner"] | order(order asc, _id asc){...,logo{${imageProjection}},favicon{${imageProjection}},socialImage{${imageProjection}}},
     "resources": *[_type == "resource"] | order(order asc, _id asc){...,"fileUrl":file.asset->url}

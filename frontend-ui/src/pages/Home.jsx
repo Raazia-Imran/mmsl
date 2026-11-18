@@ -7,7 +7,7 @@ import Projects from "../components/Projects.jsx";
 import Publications from "../components/Publications.jsx";
 import Resources from "../components/Resources.jsx";
 import Partners from "../components/Partners.jsx";
-import Achievements from "../components/Achievements.jsx";
+import Highlights from "../components/Highlights.jsx";
 import { imageUrl } from "../content.js";
 export default function Home({ data }) {
   const copy = useCopy();
@@ -96,7 +96,7 @@ export default function Home({ data }) {
           href="/achievements/"
           linkLabel={copy("Our achievements")}
         />
-        <Achievements data={achievements} />
+        <Highlights achievements={achievements} news={data.news} compact />
       </section>
       <section className="section collaborators-section">
         <SectionHeading

@@ -101,3 +101,25 @@ test("published copy and resolved media survive the CMS boundary", () => {
   assert.deepEqual(data.projects[0].image, photo);
   assert.deepEqual(data.expertise[0].image, photo);
 });
+
+test("each project and expertise uses a distinct topic image", () => {
+  const images = [
+    ...fallbackContent.projects,
+    ...fallbackContent.expertise,
+  ].map((entry) => entry.image?.asset?.url);
+  assert.equal(images.length, 6);
+  assert.equal(new Set(images).size, 6);
+  assert.ok(images.every((url) => url?.startsWith("https://cdn.sanity.io/")));
+});
+test("News placeholders are intentionally empty and CMS news can be cleared", () => {
+  assert.equal(fallbackContent.news.length, 3);
+  assert.ok(
+    fallbackContent.news.every(
+      (item) => item.placeholder && !item.title && !item.description,
+    ),
+  );
+  assert.deepEqual(
+    normalizeContent({ settings: { title: "Client" }, news: [] }).news,
+    [],
+  );
+});

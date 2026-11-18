@@ -43,7 +43,7 @@ export default defineConfig({
               ["Team Page", "team", "teamMember"],
               ["Services Page", "projects", "project"],
               ["Research Papers Page", "papers", "publication"],
-              ["Achievements & News", "achievements", "achievement"],
+              ["Lab Highlights", "achievements", "achievement"],
               ["Collaborators Page", "clients", "partner"],
 
               ["Contact Page", "contact", null],
@@ -96,6 +96,17 @@ export default defineConfig({
                               ),
                           ]
                         : []),
+                      ...(key === "achievements"
+                        ? [
+                            S.listItem()
+                              .title("News cards")
+                              .child(
+                                S.documentTypeList("newsItem").title(
+                                  "News cards",
+                                ),
+                              ),
+                          ]
+                        : []),
                       ...(type
                         ? [
                             S.listItem()
@@ -104,7 +115,7 @@ export default defineConfig({
                                   teamMember: "Team profiles",
                                   project: "Project entries",
                                   publication: "Papers and PDFs",
-                                  achievement: "Achievements and news entries",
+                                  achievement: "Achievement cards",
                                   partner: "Partner logos",
                                   resource: "Resource entries",
                                 }[type],

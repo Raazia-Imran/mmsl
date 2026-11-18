@@ -20,6 +20,7 @@ const documents = [
   ...data.projects,
   ...data.publications,
   ...data.achievements,
+  ...(data.news || []),
   ...data.partners,
   ...data.resources,
 ];

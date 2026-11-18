@@ -4,7 +4,7 @@ import React from "react";
 import Projects from "../components/Projects.jsx";
 import Publications from "../components/Publications.jsx";
 import Resources from "../components/Resources.jsx";
-import Achievements from "../components/Achievements.jsx";
+import Highlights from "../components/Highlights.jsx";
 import Partners from "../components/Partners.jsx";
 import ScaleExplorer from "../components/ScaleExplorer.jsx";
 import Contact from "./Contact.jsx";
@@ -112,7 +112,7 @@ export default function InnerPage({ path, data }) {
                   "These supplied milestones are awaiting confirmation and supporting details from the lab.",
                 )}
               </p>
-              <Achievements data={data.achievements} />
+              <Highlights achievements={data.achievements} news={data.news} />
             </>
           )}
           {path === "/collaborators/" && (

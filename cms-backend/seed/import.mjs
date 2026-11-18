@@ -34,6 +34,7 @@ const all = [
   ...(data.copy || []),
   ...data.publications,
   ...data.achievements,
+  ...(data.news || []),
   ...data.partners,
   ...data.resources,
 ];

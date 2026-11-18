@@ -2,8 +2,6 @@
   {
     "_id": "wording-app",
     "_type": "websiteCopy",
-    "title": "Page not found",
-    "order": 0,
     "entries": [
       {
         "_key": "text0",
@@ -30,13 +28,13 @@
         "key": "Return home",
         "value": "Return home"
       }
-    ]
+    ],
+    "order": 0,
+    "title": "Page not found"
   },
   {
     "_id": "wording-home",
     "_type": "websiteCopy",
-    "title": "Home page labels",
-    "order": 1,
     "entries": [
       {
         "_key": "text0",
@@ -81,20 +79,20 @@
       {
         "_key": "text8",
         "key": "Our achievements",
-        "value": "Our achievements"
+        "value": "All highlights"
       },
       {
         "_key": "text9",
         "key": "CONNECTED THROUGH COLLABORATION",
         "value": "CONNECTED THROUGH COLLABORATION"
       }
-    ]
+    ],
+    "order": 1,
+    "title": "Home page labels"
   },
   {
     "_id": "wording-innerpage",
     "_type": "websiteCopy",
-    "title": "Inner pages and Privacy policy",
-    "order": 2,
     "entries": [
       {
         "_key": "text0",
@@ -191,13 +189,13 @@
         "key": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated.",
         "value": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated."
       }
-    ]
+    ],
+    "order": 2,
+    "title": "Inner pages and Privacy policy"
   },
   {
     "_id": "wording-contact",
     "_type": "websiteCopy",
-    "title": "Contact form",
-    "order": 3,
     "entries": [
       {
         "_key": "text0",
@@ -324,13 +322,13 @@
         "key": "Something went wrong. Please try again.",
         "value": "Something went wrong. Please try again."
       }
-    ]
+    ],
+    "order": 3,
+    "title": "Contact form"
   },
   {
     "_id": "wording-layout",
     "_type": "websiteCopy",
-    "title": "Header and footer",
-    "order": 4,
     "entries": [
       {
         "_key": "text0",
@@ -415,7 +413,7 @@
       {
         "_key": "text16",
         "key": "Achievements",
-        "value": "Achievements"
+        "value": "Lab Highlights"
       },
       {
         "_key": "text17",
@@ -447,13 +445,13 @@
         "key": "Back to top \u2191",
         "value": "Back to top \u2191"
       }
-    ]
+    ],
+    "order": 4,
+    "title": "Header and footer"
   },
   {
     "_id": "wording-projects",
     "_type": "websiteCopy",
-    "title": "Projects labels",
-    "order": 5,
     "entries": [
       {
         "_key": "text0",
@@ -480,13 +478,13 @@
         "key": "Ask about this research",
         "value": "Ask about this research"
       }
-    ]
+    ],
+    "order": 5,
+    "title": "Projects labels"
   },
   {
     "_id": "wording-publications",
     "_type": "websiteCopy",
-    "title": "Research paper labels",
-    "order": 6,
     "entries": [
       {
         "_key": "text0",
@@ -613,26 +611,26 @@
         "key": "The paper PDF and complete bibliographic details will be added after confirmation by the lab.",
         "value": "The paper PDF and complete bibliographic details will be added after confirmation by the lab."
       }
-    ]
+    ],
+    "order": 6,
+    "title": "Research paper labels"
   },
   {
     "_id": "wording-achievements",
     "_type": "websiteCopy",
-    "title": "Achievements labels",
-    "order": 7,
     "entries": [
       {
         "_key": "text0",
         "key": "Read story ",
         "value": "Read story "
       }
-    ]
+    ],
+    "order": 7,
+    "title": "Achievements labels"
   },
   {
     "_id": "wording-dialog",
     "_type": "websiteCopy",
-    "title": "Dialog labels",
-    "order": 8,
     "entries": [
       {
         "_key": "text0",
@@ -644,13 +642,13 @@
         "key": "MULTISCALE LAB / RESEARCH",
         "value": "MULTISCALE LAB / RESEARCH"
       }
-    ]
+    ],
+    "order": 8,
+    "title": "Dialog labels"
   },
   {
     "_id": "wording-motionpreference",
     "_type": "websiteCopy",
-    "title": "MotionPreference labels",
-    "order": 9,
     "entries": [
       {
         "_key": "text0",
@@ -662,6 +660,51 @@
         "key": "Turning this on saves your choice in this browser. Clearing it removes the saved preference.",
         "value": "Turning this on saves your choice in this browser. Clearing it removes the saved preference."
       }
-    ]
+    ],
+    "order": 9,
+    "title": "MotionPreference labels"
+  },
+  {
+    "_id": "wording-highlights",
+    "_type": "websiteCopy",
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Achievement milestones",
+        "value": "Achievements"
+      },
+      {
+        "_key": "text1",
+        "key": "Latest news",
+        "value": "News"
+      },
+      {
+        "_key": "text2",
+        "key": "Card carousel",
+        "value": "Card carousel"
+      },
+      {
+        "_key": "text3",
+        "key": "Previous card",
+        "value": "Previous card"
+      },
+      {
+        "_key": "text4",
+        "key": "Next card",
+        "value": "Next card"
+      },
+      {
+        "_key": "text5",
+        "key": "Swipe or use the arrow controls",
+        "value": "Swipe or use the arrow controls"
+      },
+      {
+        "_key": "text6",
+        "key": "News card awaiting content",
+        "value": "News card awaiting content"
+      }
+    ],
+    "order": 11,
+    "title": "Lab Highlights and carousel controls"
   }
 ]

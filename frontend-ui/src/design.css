@@ -999,3 +999,204 @@ html[data-motion="off"] .collaborator-row[aria-hidden] {
   object-position: center;
   border-radius: 16px;
 }
+
+/* Gentle orange/lavender interactions; selected options and focus are distinct. */
+:is(.service-card, .news-card, .purpose-card, .expertise-glass):is(
+  :hover,
+  :focus-visible,
+  :active
+) {
+  background: linear-gradient(125deg, #fff0db 0%, #f4eaf5 48%, #e7e1f7 100%);
+  color: #282446;
+  border-color: #d5c7df;
+}
+:is(.service-card, .news-card, .purpose-card, .expertise-glass):is(
+    :hover,
+    :focus-visible,
+    :active
+  )
+  :is(strong, h2, h3, p, time, svg, a, .service-card-copy > span) {
+  color: #282446;
+}
+.filter-options > button:is(:hover, :focus-visible, [aria-selected="true"]) {
+  background: transparent;
+  color: var(--ink);
+}
+.filter-options > button[aria-selected="true"] {
+  background: linear-gradient(120deg, #ffefd9, #eee5fa);
+  color: #292345;
+}
+.filter-options
+  > button:is(:hover, :focus-visible):not([aria-selected="true"]) {
+  background: transparent;
+  color: #292345;
+  outline: 1px solid #c9badb;
+  outline-offset: -2px;
+}
+.filter-trigger[aria-expanded="true"] {
+  background: linear-gradient(120deg, #fff5e8, #f2ecfb);
+  border-color: #c4b6d9;
+}
+.highlights-sections {
+  display: grid;
+  gap: 3rem;
+  min-width: 0;
+}
+.highlight-section {
+  min-width: 0;
+}
+.highlight-section > h2,
+.highlight-section > h3 {
+  margin: 0 0 0.3rem;
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+}
+.swipe-carousel {
+  --highlight-card-width: clamp(260px, 32vw, 360px);
+  min-width: 0;
+}
+.highlight-viewport {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding: 2rem max(1rem, calc((100% - var(--highlight-card-width)) / 2));
+  margin: 0;
+  isolation: isolate;
+  cursor: grab;
+}
+.highlight-viewport::-webkit-scrollbar {
+  display: none;
+}
+.highlight-viewport[data-dragging="true"] {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+.highlight-viewport:focus-visible {
+  outline: 2px solid #aa91ca;
+  outline-offset: -2px;
+  border-radius: 22px;
+}
+.highlight-viewport > .news-card {
+  flex: 0 0 var(--highlight-card-width);
+  width: var(--highlight-card-width);
+  max-width: none;
+  padding: 0;
+  min-height: 340px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  border: 1px solid #e4dcec;
+  background: linear-gradient(140deg, #fff8edc9, #eee7fac4);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 18px 38px -24px #4c3a6c66;
+  transform: scale(0.87) rotateY(9deg);
+  transform-origin: center;
+  opacity: 0.63;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    background 0.3s;
+  backdrop-filter: blur(16px);
+}
+.highlight-viewport > .news-card[data-position="before"] {
+  transform: scale(0.87) rotateY(-9deg);
+}
+.highlight-viewport > .news-card[data-position="active"] {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+.highlight-viewport > .news-card:is(:hover, :focus-visible) {
+  background: linear-gradient(125deg, #fff0db, #eee5fa);
+}
+.highlight-viewport .news-visual {
+  aspect-ratio: 16/9;
+  min-height: 150px;
+  background: linear-gradient(120deg, #f9eddf, #e9e2f6);
+}
+.highlight-viewport .news-copy {
+  background: linear-gradient(115deg, #fff4e6bb, #eee7f8bb);
+}
+.highlight-viewport .placeholder-card .news-copy {
+  min-height: 130px;
+}
+.highlight-viewport img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.carousel-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid #d7cce5;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #fff0dd, #eee7fa);
+  color: #39315f;
+}
+.carousel-arrow.previous svg {
+  transform: rotate(180deg);
+}
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.carousel-arrow:focus-visible {
+  outline: 2px solid #7b60a5;
+  outline-offset: 3px;
+}
+.carousel-position {
+  font-size: 0.8rem;
+  min-width: 3rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.carousel-hint {
+  margin: 0.65rem 0 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+@media (max-width: 600px) {
+  .swipe-carousel {
+    --highlight-card-width: min(82vw, 340px);
+  }
+  .highlight-viewport {
+    gap: 0.55rem;
+    padding-block: 1.3rem;
+  }
+  .highlight-viewport > .news-card {
+    min-height: 320px;
+  }
+  .highlights-sections {
+    gap: 2rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .highlight-viewport > .news-card {
+    transition: none;
+  }
+}
+html[data-motion="off"] .highlight-viewport > .news-card {
+  transition: none;
+  transform: none;
+}
+@media (min-width: 701px) {
+  .expertise-glass .engineering-art {
+    width: 112px;
+    height: 112px;
+    border-radius: 20px;
+  }
+}
