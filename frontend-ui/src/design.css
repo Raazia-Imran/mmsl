@@ -788,3 +788,19 @@ html[data-motion="off"] .collaborator-row[aria-hidden] {
 .expertise-card:is(:hover, :focus-visible, :active) .expertise-symbol {
   color: #484080;
 }
+
+/* Keep menus usable on short phones, landscape screens and browser zoom. */
+@media (max-width: 950px) {
+  .nav.open {
+    max-height: calc(100dvh - 95px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+.filter-options {
+  max-height: min(270px, 45dvh);
+}
+:is(.service-card-copy, .news-copy, .prose, .team-grid, .contact-info) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
