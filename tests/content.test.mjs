@@ -50,7 +50,7 @@ test("supplied source text and asset counts are retained", async () => {
   assert.equal(fallbackContent.partners.length, 6);
   assert.equal(fallbackContent.achievements.length, 4);
   assert.equal(fallbackContent.resources.length, 4);
-  assert.equal(paths.length, 10);
+  assert.equal(paths.length, 9);
 });
 test("imported document IDs are unique and require editorial review", () => {
   const all = [

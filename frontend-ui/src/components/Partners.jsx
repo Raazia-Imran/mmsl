@@ -1,8 +1,9 @@
 import React from "react";
 import { safeUrl, imageUrl } from "../content.js";
 export default function Partners({ data }) {
+  const [paused, setPaused] = React.useState(false);
   return (
-    <div className="partner-grid">
+    <div className="collaborator-slider"><button onClick={() => setPaused(!paused)} aria-pressed={paused}>{paused ? "Play logos" : "Pause logos"}</button><div className="logo-window"><div className={"logo-track" + (paused ? " paused" : "")}>{[0,1].map(copy => <div key={copy} className="logo-group" aria-hidden={copy ? true : undefined} inert={copy ? true : undefined}>
       {data.map((p) => (
         <div className="partner-logo" key={p._id}>
           {safeUrl(p.url) ? (
@@ -22,6 +23,6 @@ export default function Partners({ data }) {
           )}
         </div>
       ))}
-    </div>
+    </div>)}</div></div></div>
   );
 }

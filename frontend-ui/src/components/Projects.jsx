@@ -11,59 +11,9 @@ export default function Projects({ data, compact = false }) {
   const p = data[active] || data[0];
   return (
     <>
-      <div className="research-browser" data-reveal>
-        <div className="research-select" aria-label="Research projects">
-          {data.map((x, i) => (
-            <button
-              key={x._id}
-              className={i === active ? "active" : ""}
-              aria-pressed={i === active}
-              onClick={() => setActive(i)}
-            >
-              <span className="project-order">0{i + 1}</span>
-              <span>
-                <small>{x.discipline || "Computational research"}</small>
-                <strong>{x.title}</strong>
-              </span>
-              <Icon name="upRight" />
-            </button>
-          ))}
-        </div>
-        <article className="research-feature" key={p._id}>
-          <div className="research-art">
-            <Lattice scale={active % 3} />
-            <span className="art-annotation">
-              MULTISCALE / {String(active + 1).padStart(2, "0")}
-            </span>
-            <span className="art-dot" />
-          </div>
-          <div className="research-feature-copy">
-            <span className="eyebrow">
-              {p.discipline || "Research project"}
-            </span>
-            <h3>{p.title}</h3>
-            <p>{p.summary}</p>
-            <div className="tags">
-              {p.methods?.map((m) => (
-                <span key={m}>{m}</span>
-              ))}
-            </div>
-            <button className="text-link" onClick={() => setSelected(p)}>
-              Project overview
-              <Icon name="upRight" />
-            </button>
-          </div>
-        </article>
-      </div>
-      {!compact && (
-        <div className="research-note">
-          <Icon name="layers" />
-          <p>
-            Our work connects material behaviour, fluid dynamics and structural
-            mechanics through multiscale methods.
-          </p>
-        </div>
-      )}
+      <h2>Current projects</h2>
+      <div className="service-deck">{data.map(project => <button className="service-card" key={project._id} onClick={() => setSelected(project)}><strong>{project.title}</strong><span>{project.summary}</span><Icon name="upRight" /></button>)}</div>
+      {!compact && <><h2>Expertise</h2><div className="service-deck">{["Finite Element Analysis (FEA)", "Computational Fluid Dynamics (CFD)", "Molecular Dynamics (MD)"].map(method => <article className="service-card" key={method}><strong>{method}</strong></article>)}</div></>}
       {selected && (
         <Dialog title={selected.title} onClose={close}>
           <div className="tags">

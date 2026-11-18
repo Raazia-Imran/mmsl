@@ -15,12 +15,12 @@
     },
     {
       "source": "/clients.php",
-      "destination": "/clients/",
+      "destination": "/collaborators/",
       "permanent": true
     },
     {
       "source": "/projects.php",
-      "destination": "/projects/",
+      "destination": "/services/",
       "permanent": true
     },
     {
@@ -29,8 +29,13 @@
       "permanent": true
     },
     {
-      "source": "/resources.php",
-      "destination": "/resources/",
+      "source": "/clients/",
+      "destination": "/collaborators/",
+      "permanent": true
+    },
+    {
+      "source": "/projects/",
+      "destination": "/services/",
       "permanent": true
     }
   ],

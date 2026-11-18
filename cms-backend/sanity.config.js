@@ -34,11 +34,11 @@ export default defineConfig({
             ...[
               ["About Page", "about", null],
               ["Team Page", "team", "teamMember"],
-              ["Projects Page", "projects", "project"],
+              ["Services Page", "projects", "project"],
               ["Research Papers Page", "papers", "publication"],
               ["Achievements Page", "achievements", "achievement"],
-              ["Clients and Partners Page", "clients", "partner"],
-              ["Resources Page", "resources", "resource"],
+              ["Collaborators Page", "clients", "partner"],
+
               ["Contact Page", "contact", null],
               ["Privacy Page", "privacy", null],
             ].map(([title, key, type]) =>

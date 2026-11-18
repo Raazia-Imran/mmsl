@@ -1,7 +1,7 @@
 import { build, loadEnv } from "vite";
 import { mkdir, readFile, writeFile, rm } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 const root = fileURLToPath(new URL("..", import.meta.url));
 process.chdir(root);
 const config = path.join(root, "frontend-ui/vite.config.js");
@@ -15,7 +15,7 @@ await build({
   },
 });
 const { render, paths, routeNames, content } = await import(
-  path.join(root, ".ssr/prerender.js")
+  pathToFileURL(path.join(root, ".ssr/prerender.js")).href
 );
 const template = await readFile("dist/index.html", "utf8");
 const env = loadEnv("production", root, "");

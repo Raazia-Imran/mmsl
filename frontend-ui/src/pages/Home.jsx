@@ -29,7 +29,7 @@ export default function Home({ data }) {
           <p className="hero-lab">Multiscale Modelling & Simulation Lab</p>
           <p className="hero-description">{home.heroDescription}</p>
           <div className="hero-actions">
-            <a className="button primary" href="/projects/">
+            <a className="button primary" href="/services/">
               {home.primaryActionLabel}
               <Icon name="upRight" />
             </a>
@@ -38,24 +38,12 @@ export default function Home({ data }) {
               <Icon name="arrow" />
             </a>
           </div>
-          <div className="hero-affiliation">
-            <img
-              src="/brand/ned-logo.png"
-              width="39"
-              height="45"
-              alt="NED University emblem"
-            />
-            <span>
-              Department of Mechanical Engineering
-              <br />
-              <strong>NED University, Karachi</strong>
-            </span>
-          </div>
+
         </div>
         <div className="hero-art">
           <img
-            src={imageUrl(home, "heroImage", "heroImagePath")}
-            alt="Original conceptual artwork connecting atomic structures, a material lattice and fluid flow"
+            src="/images/hero-bg.png"
+            alt=""
             fetchPriority="high"
           />
           <div className="orbit orbit-one" />
@@ -66,12 +54,12 @@ export default function Home({ data }) {
           <div className="hero-glass">
             <Icon name="atom" size={30} />
             <div>
-              From atoms to engineering.
-              <small>One connected perspective.</small>
+              Multiscale simulation
+              <small>FEA · CFD · MD</small>
             </div>
           </div>
           <span className="hero-art-caption">
-            CONCEPTUAL SCIENTIFIC VISUALIZATION
+            
           </span>
         </div>
         <a className="scroll-cue" href="#approach">
@@ -101,13 +89,13 @@ export default function Home({ data }) {
           ))}
         </div>
       </section>
-      <ScaleExplorer />
+      
       <section className="section research-section">
         <SectionHeading
           label="RESEARCH IN FOCUS"
           title={home.projectTitle}
           description="Explore the questions, materials and methods behind our projects."
-          href="/projects/"
+          href="/services/"
           linkLabel="All projects"
         />
         <Projects data={projects} compact />
@@ -134,20 +122,12 @@ export default function Home({ data }) {
       <section className="section collaborators-section">
         <SectionHeading
           label="CONNECTED THROUGH COLLABORATION"
-          title={home.partnersTitle}
-          description={home.partnersSubtitle}
+          title="Collaborators"
+          
         />
         <Partners data={partners} />
       </section>
-      <section className="section resources-section">
-        <SectionHeading
-          label="EXPLORE. LEARN. BUILD."
-          title={home.resourcesTitle}
-          href="/resources/"
-          linkLabel="All resources"
-        />
-        <Resources data={resources} compact />
-      </section>
+
     </>
   );
 }

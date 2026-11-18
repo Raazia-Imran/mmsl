@@ -37,7 +37,7 @@ export default function Layout({ settings, path, children }) {
         <header className={`header ${compact ? "compressed" : ""}`}>
           <a className="brand" href="/" aria-label={`${settings.title} home`}>
             <img
-              src={imageUrl(settings, "logo", "logoPath")}
+              src={"/images/lab-mark.png"}
               width="210"
               height="90"
               alt={settings.title}
@@ -94,22 +94,10 @@ export default function Layout({ settings, path, children }) {
           <div className="footer-marks">
             <img
               className="footer-lab-logo"
-              src={imageUrl(settings, "logo", "logoPath")}
+              src={"/images/lab-mark.png"}
               alt={settings.title}
             />
-            <div className="university-lockup">
-              <img
-                src={settings.nedLogoPath || "/brand/ned-logo.png"}
-                alt="NED University emblem"
-                width="64"
-                height="64"
-              />
-              <div>
-                NED University of
-                <br />
-                Engineering & Technology<small>Karachi, Pakistan</small>
-              </div>
-            </div>
+
           </div>
         </div>
         <div className="footer-grid">
@@ -118,22 +106,21 @@ export default function Layout({ settings, path, children }) {
             <p>
               {settings.department}
               <br />
-              NED University of Engineering & Technology
-              <br />
+
               University Road, Karachi, Pakistan
             </p>
           </div>
           <div>
             <h3>Explore</h3>
             <a href="/about/">About the lab</a>
-            <a href="/projects/">Research projects</a>
+            <a href="/services/">Research projects</a>
             <a href="/papers/">Publications</a>
           </div>
           <div>
             <h3>Discover</h3>
             <a href="/achievements/">Achievements</a>
-            <a href="/clients/">Clients & partners</a>
-            <a href="/resources/">Research resources</a>
+            <a href="/collaborators/">Collaborators</a>
+
           </div>
           <div>
             <h3>Get in touch</h3>

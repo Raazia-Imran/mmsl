@@ -2575,3 +2575,10 @@ button:disabled {
 .nav {
   gap: 17px;
 }
+
+.service-deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem;perspective:1000px;margin:1rem 0 3rem}
+.service-card{display:grid;gap:1rem;text-align:left;padding:2rem;border:1px solid #cad2e4;border-top:4px solid #ff9418;border-radius:1rem;background:linear-gradient(140deg,#fff,#eef2fb);color:#121944;transition:transform .3s,box-shadow .3s}.service-card strong{font-size:1.3rem}.service-card:hover,.service-card:focus-visible{transform:translateY(-5px) rotateY(-4deg);box-shadow:0 14px 24px #131d4820}
+.footer .footer-lab-logo{background:transparent;filter:drop-shadow(0 0 2px white)}
+@media(prefers-reduced-motion:reduce){.service-card:hover,.service-card:focus-visible{transform:none}}
+
+.logo-window{overflow:hidden}.logo-track,.logo-group{display:flex;width:max-content}.logo-track{animation:logos 30s linear infinite}.logo-group .partner-logo{width:clamp(145px,18vw,240px);margin:8px}.logo-track.paused,.logo-window:hover .logo-track,.logo-window:focus-within .logo-track{animation-play-state:paused}@keyframes logos{to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.logo-track{animation:none}.logo-window{overflow:auto}.logo-group[aria-hidden]{display:none}}

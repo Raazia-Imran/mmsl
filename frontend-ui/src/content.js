@@ -3,11 +3,10 @@ export const fallbackContent = source;
 export const paths = [
   "/",
   "/about/",
-  "/projects/",
+  "/services/",
   "/papers/",
   "/achievements/",
-  "/clients/",
-  "/resources/",
+  "/collaborators/",
   "/contact/",
   "/privacy/",
   "/team/",
@@ -15,11 +14,10 @@ export const paths = [
 export const routeNames = {
   "/": "Home",
   "/about/": "About Us",
-  "/projects/": "Projects",
+  "/services/": "Services",
   "/papers/": "Research Papers",
   "/achievements/": "Achievements",
-  "/clients/": "Clients & Partners",
-  "/resources/": "Resources",
+  "/collaborators/": "Collaborators",
   "/contact/": "Contact Us",
   "/privacy/": "Privacy Notice",
   "/team/": "Team",
@@ -48,7 +46,7 @@ export function imageUrl(item, imageField, pathField) {
 export function normalizeContent(data) {
   if (!data?.settings) return source;
   return {
-    settings: { ...source.settings, ...data.settings },
+    settings: { ...source.settings, ...data.settings, navigation: (data.settings.navigation || source.settings.navigation).filter(n => n.path !== "/resources/").map(n => n.path === "/clients/" ? {...n,path:"/collaborators/",label:"Collaborators"} : n.path === "/projects/" ? {...n,path:"/services/",label:"Services"} : n) },
     home: { ...source.home, ...(data.home || {}) },
     pageSettings: data.pages?.length
       ? { pages: data.pages }

@@ -18,7 +18,7 @@ const meta = {
     "A different scale.\nA deeper understanding.",
     "Connecting engineering questions with multiscale computational methods.",
   ],
-  "/projects/": [
+  "/services/": [
     "RESEARCH EXPLORER",
     "Questions worth\nlooking closer at.",
     "Explore our work in fluid dynamics, material behaviour and microstructure evolution.",
@@ -33,7 +33,7 @@ const meta = {
     "Research takes shape.\nProgress follows.",
     "Explore the achievement information supplied for the lab.",
   ],
-  "/clients/": [
+  "/collaborators/": [
     "CLIENTS & PARTNERS",
     "Better questions.\nShared perspectives.",
     "Connections between research, academia and industry.",
@@ -65,17 +65,17 @@ export default function InnerPage({ path, data }) {
         <div>
           <span className="eyebrow">
             <i />
-            {label}
+            {path === "/collaborators/" ? null : label}
           </span>
           <h1>
-            {title?.split("\n").map((x, i) => (
+            {(path === "/collaborators/" ? "Collaborators" : path === "/services/" ? "Services" : title)?.split("\n").map((x, i) => (
               <React.Fragment key={i}>
                 {i > 0 && <br />}
                 {i === 1 ? <em>{x}</em> : x}
               </React.Fragment>
             ))}
           </h1>
-          <p>{description}</p>
+          <p>{["/collaborators/","/services/"].includes(path) ? null : description}</p>
         </div>
         <div className="page-orb" aria-hidden="true">
           <Icon name="atom" size={230} />
@@ -87,18 +87,14 @@ export default function InnerPage({ path, data }) {
             <span className="eyebrow">
               MULTISCALE MODELLING & SIMULATION LAB
             </span>
-            <h2>
-              Research across
-              <br />
-              the boundaries of scale.
-            </h2>
+            <h2>Scope and objectives</h2>
             <div>
               {data.home.aboutParagraphs.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
           </section>
-          <ScaleExplorer />
+          
           <section className="section white-bridge">
             <span className="eyebrow">RESEARCH ENQUIRIES</span>
             <h2>Find the right starting point.</h2>
@@ -108,7 +104,7 @@ export default function InnerPage({ path, data }) {
               involved.
             </p>
             <div className="tags">
-              <a href="/projects/">Research projects →</a>
+              <a href="/services/">Research projects →</a>
               <a href="/papers/">Publication library →</a>
               <a href="/team/">Meet the team →</a>
             </div>
@@ -137,7 +133,7 @@ export default function InnerPage({ path, data }) {
               )}
             </div>
           )}
-          {path === "/projects/" && <Projects data={data.projects} />}
+          {path === "/services/" && <Projects data={data.projects} />}
           {path === "/papers/" && <Publications data={data.publications} />}
           {path === "/achievements/" && (
             <>
@@ -148,9 +144,9 @@ export default function InnerPage({ path, data }) {
               <Achievements data={data.achievements} />
             </>
           )}
-          {path === "/clients/" && (
+          {path === "/collaborators/" && (
             <>
-              <p className="content-note">{data.home.partnersSubtitle}</p>
+              
               <Partners data={data.partners} />
             </>
           )}
