@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { routeNames } from "../content.js";
 import Icon from "./Icon.jsx";
 import { imageUrl, safeUrl } from "../content.js";
 export default function Layout({ settings, path, children }) {
@@ -27,12 +28,7 @@ export default function Layout({ settings, path, children }) {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div className="affiliation">
-        <span>NED UNIVERSITY OF ENGINEERING & TECHNOLOGY</span>
-        <span>
-          Department of Mechanical Engineering <i />
-        </span>
-      </div>
+
       <div className="nav-space">
         <header className={`header ${compact ? "compressed" : ""}`}>
           <a className="brand" href="/" aria-label={`${settings.title} home`}>
@@ -43,6 +39,7 @@ export default function Layout({ settings, path, children }) {
               alt={settings.title}
             />
           </a>
+          <span className="mobile-page">{routeNames[path]}</span>
           <button
             id="menu-toggle"
             className="menu-toggle icon-button"
@@ -64,10 +61,10 @@ export default function Layout({ settings, path, children }) {
                 href={safeUrl(n.path) || "/"}
                 aria-current={path === n.path ? "page" : undefined}
               >
-                {n.label}
+                {n.path === "/achievements/" ? "Achievements & News" : n.label}
               </a>
             ))}
-            <a className="nav-cta" href="/contact/">
+            <a className="nav-cta" aria-current={path === "/contact/" ? "page" : undefined} href="/contact/">
               Let’s connect
               <Icon name="upRight" size={16} />
             </a>
@@ -139,7 +136,7 @@ export default function Layout({ settings, path, children }) {
             © {new Date().getFullYear()} Multiscale Modelling & Simulation Lab
           </span>
           <span>
-            <a href="/privacy/">Privacy</a>
+            <a href="/privacy/">Privacy & cookie settings</a>
             <a href="#main">Back to top ↑</a>
           </span>
         </div>

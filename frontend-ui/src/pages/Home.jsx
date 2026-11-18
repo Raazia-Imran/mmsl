@@ -46,36 +46,10 @@ export default function Home({ data }) {
             alt=""
             fetchPriority="high"
           />
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="art-label art-label-top">
-            <span className="status-dot" /> EXPLORING THE CONNECTIONS
-          </div>
-          <div className="hero-glass">
-            <Icon name="atom" size={30} />
-            <div>
-              Multiscale simulation
-              <small>FEA · CFD · MD</small>
-            </div>
-          </div>
-          <span className="hero-art-caption">
-            
-          </span>
         </div>
-        <a className="scroll-cue" href="#approach">
-          <span>SCROLL TO EXPLORE</span>
-          <span>↓</span>
-        </a>
+
       </section>
-      <div className="research-ribbon">
-        <span>Material behaviour</span>
-        <i />
-        <span>Fluid dynamics</span>
-        <i />
-        <span>Structural mechanics</span>
-        <i />
-        <span>Computational methods</span>
-      </div>
+
       <section className="section introduction" id="approach">
         <SectionHeading
           label="THE LAB / OUR APPROACH"
@@ -112,8 +86,8 @@ export default function Home({ data }) {
       </section>
       <section className="section milestones-section">
         <SectionHeading
-          label="MOMENTS THAT MATTER"
-          title={home.achievementTitle}
+          label=""
+          title="Achievements & News"
           href="/achievements/"
           linkLabel="Our achievements"
         />

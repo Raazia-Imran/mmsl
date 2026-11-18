@@ -36,7 +36,7 @@ export default defineConfig({
               ["Team Page", "team", "teamMember"],
               ["Services Page", "projects", "project"],
               ["Research Papers Page", "papers", "publication"],
-              ["Achievements Page", "achievements", "achievement"],
+              ["Achievements & News", "achievements", "achievement"],
               ["Collaborators Page", "clients", "partner"],
 
               ["Contact Page", "contact", null],
@@ -86,7 +86,7 @@ export default defineConfig({
                                   teamMember: "Team profiles",
                                   project: "Project entries",
                                   publication: "Papers and PDFs",
-                                  achievement: "Milestones",
+                                  achievement: "Achievements and news entries",
                                   partner: "Partner logos",
                                   resource: "Resource entries",
                                 }[type],

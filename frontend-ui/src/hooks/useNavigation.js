@@ -42,12 +42,7 @@ export default function useNavigation(initialPath) {
           );
         else window.scrollTo({ top: 0, behavior: "instant" });
       };
-      if (
-        document.startViewTransition &&
-        !matchMedia("(prefers-reduced-motion: reduce)").matches
-      )
-        document.startViewTransition(update);
-      else update();
+      update();
     };
     document.addEventListener("click", click);
     window.addEventListener("popstate", pop);

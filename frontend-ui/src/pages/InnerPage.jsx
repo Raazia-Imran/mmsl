@@ -1,3 +1,4 @@
+import MotionPreference from "../components/MotionPreference.jsx";
 import React from "react";
 import Projects from "../components/Projects.jsx";
 import Publications from "../components/Publications.jsx";
@@ -63,12 +64,9 @@ export default function InnerPage({ path, data }) {
     <>
       <section className="page-hero">
         <div>
-          <span className="eyebrow">
-            <i />
-            {path === "/collaborators/" ? null : label}
-          </span>
+
           <h1>
-            {(path === "/collaborators/" ? "Collaborators" : path === "/services/" ? "Services" : title)?.split("\n").map((x, i) => (
+            {(path === "/achievements/" ? "Achievements & News" : path === "/contact/" ? "Contact the lab" : path === "/collaborators/" ? "Collaborators" : path === "/services/" ? "Services" : title)?.split("\n").map((x, i) => (
               <React.Fragment key={i}>
                 {i > 0 && <br />}
                 {i === 1 ? <em>{x}</em> : x}
@@ -77,9 +75,7 @@ export default function InnerPage({ path, data }) {
           </h1>
           <p>{["/collaborators/","/services/"].includes(path) ? null : description}</p>
         </div>
-        <div className="page-orb" aria-hidden="true">
-          <Icon name="atom" size={230} />
-        </div>
+
       </section>
       {path === "/about/" ? (
         <>
@@ -95,20 +91,7 @@ export default function InnerPage({ path, data }) {
             </div>
           </section>
           
-          <section className="section white-bridge">
-            <span className="eyebrow">RESEARCH ENQUIRIES</span>
-            <h2>Find the right starting point.</h2>
-            <p>
-              Explore the research projects for current topics, the publication
-              library for published work, or the team page to learn who is
-              involved.
-            </p>
-            <div className="tags">
-              <a href="/services/">Research projects →</a>
-              <a href="/papers/">Publication library →</a>
-              <a href="/team/">Meet the team →</a>
-            </div>
-          </section>
+
         </>
       ) : (
         <section className="section inner-content">
@@ -179,7 +162,8 @@ export default function InnerPage({ path, data }) {
                 information such as IP addresses and browser details to operate
                 and protect their services.
               </p>
-              <h2>Cookies and analytics</h2>
+              <h2>Cookies and animation preferences</h2>
+              <MotionPreference />
               <p>
                 This website does not add advertising cookies or optional
                 analytics. Browser preferences and security features provided by

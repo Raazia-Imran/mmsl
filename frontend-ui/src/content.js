@@ -16,7 +16,7 @@ export const routeNames = {
   "/about/": "About Us",
   "/services/": "Services",
   "/papers/": "Research Papers",
-  "/achievements/": "Achievements",
+  "/achievements/": "Achievements & News",
   "/collaborators/": "Collaborators",
   "/contact/": "Contact Us",
   "/privacy/": "Privacy Notice",

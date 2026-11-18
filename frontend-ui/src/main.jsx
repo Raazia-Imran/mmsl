@@ -11,3 +11,5 @@ const initialData = serialized ? JSON.parse(serialized.textContent) : undefined;
 const app = <App path={path} initialData={initialData} />;
 if (root.children.length) hydrateRoot(root, app);
 else createRoot(root).render(app);
+
+try { if (localStorage.getItem("mmsl-motion") === "off") document.documentElement.dataset.motion = "off"; } catch {}
