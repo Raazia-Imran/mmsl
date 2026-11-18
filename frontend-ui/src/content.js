@@ -64,6 +64,9 @@ export function normalizeContent(data) {
       ? { pages: data.pages }
       : data.pageSettings || source.pageSettings,
     team: data.team || [],
+    expertise: Array.isArray(data.expertise)
+      ? data.expertise
+      : source.expertise,
     ...Object.fromEntries(
       ["projects", "publications", "achievements", "partners", "resources"].map(
         (key) => [key, Array.isArray(data[key]) ? data[key] : []],
@@ -81,11 +84,12 @@ export async function fetchContent(projectId, dataset = "production", signal) {
   const imageProjection = '"asset": asset->{url}';
   const query = `{
     "team": *[_type == "teamMember"] | order(order asc),
+    "expertise": *[_type == "expertise"] | order(order asc, _id asc){...,image{${imageProjection}}},
     "pages": *[_type == "pageContent"],
     "pageSettings": *[_type == "pageSettings" && _id == "pageSettings"][0],
     "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{...,logo{${imageProjection}}},
     "home": *[_type == "homePage" && _id == "homePage"][0]{...,heroImage{${imageProjection}}},
-    "projects": *[_type == "project"] | order(order asc, _id asc),
+    "projects": *[_type == "project"] | order(order asc, _id asc){...,image{${imageProjection}}},
     "publications": *[_type == "publication"] | order(order asc, _id asc){...,"pdfUrl":pdf.asset->url},
     "achievements": *[_type == "achievement"] | order(date desc, order asc, _id asc){...,cover{${imageProjection}}},
     "partners": *[_type == "partner"] | order(order asc, _id asc){...,logo{${imageProjection}}},

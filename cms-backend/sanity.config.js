@@ -78,6 +78,17 @@ export default defineConfig({
                               ),
                           ]
                         : []),
+                      ...(key === "projects"
+                        ? [
+                            S.listItem()
+                              .title("Expertise cards")
+                              .child(
+                                S.documentTypeList("expertise").title(
+                                  "Expertise cards",
+                                ),
+                              ),
+                          ]
+                        : []),
                       ...(type
                         ? [
                             S.listItem()

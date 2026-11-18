@@ -363,5 +363,31 @@
     ],
     "reviewStatus": "needs-review"
   },
-  "team": []
+  "team": [],
+  "expertise": [
+    {
+      "_id": "expertise-fea",
+      "_type": "expertise",
+      "title": "Finite Element Analysis (FEA)",
+      "description": "",
+      "icon": "structure",
+      "order": 10
+    },
+    {
+      "_id": "expertise-cfd",
+      "_type": "expertise",
+      "title": "Computational Fluid Dynamics (CFD)",
+      "description": "",
+      "icon": "flow",
+      "order": 20
+    },
+    {
+      "_id": "expertise-md",
+      "_type": "expertise",
+      "title": "Molecular Dynamics (MD)",
+      "description": "",
+      "icon": "material",
+      "order": 30
+    }
+  ]
 }

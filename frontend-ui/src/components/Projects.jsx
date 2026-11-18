@@ -8,19 +8,15 @@ const projectArt = {
   "project-composite": "structure",
   "project-steel": "material",
 };
-const expertise = [
-  ["Finite Element Analysis (FEA)", "mesh"],
-  ["Computational Fluid Dynamics (CFD)", "flow"],
-  ["Molecular Dynamics (MD)", "network"],
-];
-export default function Projects({ data, compact = false }) {
+export default function Projects({ data, expertise = [], compact = false }) {
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
-  if (!data.length)
-    return <p className="empty-state">Projects will be published here.</p>;
   return (
     <>
       {!compact && <h2>Current projects</h2>}
+      {!data.length && (
+        <p className="empty-state">Projects will be published here.</p>
+      )}
       <div className="service-deck project-deck">
         {data.map((project) => (
           <button
@@ -28,8 +24,12 @@ export default function Projects({ data, compact = false }) {
             key={project._id}
             onClick={() => setSelected(project)}
           >
-            {projectArt[project._id] && (
-              <ProjectArtwork styleName={projectArt[project._id]} />
+            {(project.image || project.icon || projectArt[project._id]) && (
+              <ProjectArtwork
+                styleName={project.icon || projectArt[project._id]}
+                image={project.image}
+                alt={project.imageAlt}
+              />
             )}
             <span className="service-card-copy">
               <strong>{project.title}</strong>
@@ -44,17 +44,24 @@ export default function Projects({ data, compact = false }) {
       {!compact && (
         <>
           <h2>Expertise</h2>
-          <div className="service-deck">
-            {expertise.map(([name, design]) => (
-              <article className="service-card expertise-card" key={name}>
-                <span className="expertise-symbol">
-                  <Icon name={design} size={52} />
-                </span>
-                <div className="service-card-copy">
-                  <h3>{name}</h3>
-                </div>
-              </article>
-            ))}
+          <div className="expertise-stage">
+            <div className="expertise-deck">
+              {expertise.map((entry) => (
+                <article
+                  className="expertise-glass"
+                  key={entry._id}
+                  tabIndex={0}
+                >
+                  <ProjectArtwork
+                    styleName={entry.icon || "structure"}
+                    image={entry.image}
+                    alt={entry.imageAlt}
+                  />
+                  <h3>{entry.title}</h3>
+                  {entry.description?.trim() && <p>{entry.description}</p>}
+                </article>
+              ))}
+            </div>
           </div>
         </>
       )}

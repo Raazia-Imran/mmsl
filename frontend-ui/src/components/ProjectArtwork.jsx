@@ -1,13 +1,19 @@
 import React from "react";
+import { imageUrl } from "../content.js";
 
-export default function ProjectArtwork({ styleName }) {
+const icons = new Set(["flow", "structure", "material"]);
+
+export default function ProjectArtwork({ styleName, image, alt = "" }) {
+  const bundled = icons.has(styleName) ? styleName : "structure";
+  const src =
+    imageUrl({ image }, "image") || `/images/research/icon-${bundled}.webp`;
   return (
-    <span className="project-art">
+    <span className="project-art engineering-art">
       <img
-        src={`/images/research/${styleName}.webp`}
-        width="680"
-        height="470"
-        alt=""
+        src={src}
+        width="440"
+        height="360"
+        alt={alt}
         loading="lazy"
         decoding="async"
       />

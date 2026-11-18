@@ -5,19 +5,26 @@ import { imageUrl, safeUrl } from "../content.js";
 export default function Achievements({ data }) {
   return (
     <div className="news-grid">
-      {data.map((item) => {
+      {data.map((item, index) => {
         const cover = imageUrl(item, "cover", "coverPath");
         const source = safeUrl(item.storyUrl);
         return (
           <article className="news-card" key={item._id} tabIndex={0}>
-            {cover && (
-              <img
-                className="news-cover"
-                src={cover}
-                alt={item.coverAlt || ""}
-                loading="lazy"
-              />
-            )}
+            <div className="news-visual">
+              {cover ? (
+                <img
+                  className="news-cover"
+                  src={cover}
+                  alt={item.coverAlt || ""}
+                  loading="lazy"
+                />
+              ) : (
+                <Icon
+                  name={["target", "book", "layers", "network"][index % 4]}
+                  size={54}
+                />
+              )}
+            </div>
             <div className="news-copy">
               {item.date && <time dateTime={item.date}>{item.date}</time>}
               <h3>{item.title}</h3>

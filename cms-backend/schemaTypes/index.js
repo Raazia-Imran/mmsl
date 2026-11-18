@@ -209,6 +209,23 @@ export const schemaTypes = [
     ],
     preview: { select: { title: "heroTitle" } },
   }),
+  schema("expertise", "Expertise card", [
+    text("title", "Expertise title", { validation: required }),
+    area("description", "Short service description"),
+    text("icon", "Engineering icon", {
+      options: {
+        list: [
+          { title: "Structure and reinforcement", value: "structure" },
+          { title: "Fluid flow", value: "flow" },
+          { title: "Molecular network", value: "material" },
+        ],
+      },
+      initialValue: "structure",
+    }),
+    image("image", "Replacement icon or image"),
+    text("imageAlt", "Image description"),
+    ...common,
+  ]),
   schema("project", "Project", [
     text("title", "Project title", { validation: required }),
     text("slug", "Page anchor", {
@@ -223,6 +240,8 @@ export const schemaTypes = [
     }),
     area("summary", "Summary"),
     area("description", "Additional project details"),
+    image("image", "Project image"),
+    text("imageAlt", "Image description"),
     ...common,
   ]),
   schema("publication", "Research paper", [

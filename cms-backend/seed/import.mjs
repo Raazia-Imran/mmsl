@@ -13,9 +13,12 @@ if (client.config().projectId !== "4isekt9n")
   throw new Error(
     "This migration is restricted to the client-selected lab project 4isekt9n.",
   );
-const legacyPages = await client.fetch('coalesce(*[_id == "pageSettings"][0].pages, [])');
-const pageSources = data.pageSettings.pages.map((page) =>
-  legacyPages.find((existingPage) => existingPage.path === page.path) || page,
+const legacyPages = await client.fetch(
+  'coalesce(*[_id == "pageSettings"][0].pages, [])',
+);
+const pageSources = data.pageSettings.pages.map(
+  (page) =>
+    legacyPages.find((existingPage) => existingPage.path === page.path) || page,
 );
 const all = [
   ...pageSources.map((p) => ({
@@ -27,6 +30,7 @@ const all = [
   data.home,
   ...(data.pageSettings ? [data.pageSettings] : []),
   ...data.projects,
+  ...(data.expertise || []),
   ...data.publications,
   ...data.achievements,
   ...data.partners,

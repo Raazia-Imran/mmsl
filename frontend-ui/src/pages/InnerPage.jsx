@@ -139,7 +139,9 @@ export default function InnerPage({ path, data }) {
               )}
             </div>
           )}
-          {path === "/services/" && <Projects data={data.projects} />}
+          {path === "/services/" && (
+            <Projects data={data.projects} expertise={data.expertise} />
+          )}
           {path === "/papers/" && <Publications data={data.publications} />}
           {path === "/achievements/" && (
             <>
