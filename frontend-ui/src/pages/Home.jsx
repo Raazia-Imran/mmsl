@@ -1,3 +1,4 @@
+import { useCopy } from "../components/ContentCopy.jsx";
 import React from "react";
 import Icon from "../components/Icon.jsx";
 import SectionHeading from "../components/SectionHeading.jsx";
@@ -9,6 +10,8 @@ import Partners from "../components/Partners.jsx";
 import Achievements from "../components/Achievements.jsx";
 import { imageUrl } from "../content.js";
 export default function Home({ data }) {
+  const copy = useCopy();
+
   const { home, projects, publications, resources, partners, achievements } =
     data;
   return (
@@ -16,17 +19,17 @@ export default function Home({ data }) {
       <section className="hero">
         <div className="hero-copy">
           <span className="eyebrow">
-            <i /> RESEARCH ACROSS SCALES
+            <i /> {home.eyebrow}
           </span>
           <h1>
-            {home.heroTitle.split("\n").map((x, i) => (
+            {(home.heroTitle || "").split("\n").map((x, i) => (
               <React.Fragment key={i}>
                 {i > 0 && <br />}
                 {i === 1 ? <em>{x}</em> : x}
               </React.Fragment>
             ))}
           </h1>
-          <p className="hero-lab">Multiscale Modelling & Simulation Lab</p>
+          <p className="hero-lab">{data.settings.title}</p>
           <p className="hero-description">{home.heroDescription}</p>
           <div className="hero-actions">
             <a className="button primary" href="/services/">
@@ -38,24 +41,22 @@ export default function Home({ data }) {
               <Icon name="arrow" />
             </a>
           </div>
-
         </div>
         <div className="hero-art">
           <img
-            src="/images/hero-bg.png"
-            alt=""
+            src={imageUrl(home, "heroImage")}
+            alt={home.heroImageAlt || ""}
             fetchPriority="high"
           />
         </div>
-
       </section>
 
       <section className="section introduction" id="approach">
         <SectionHeading
-          label="THE LAB / OUR APPROACH"
+          label={copy("THE LAB / OUR APPROACH")}
           title={home.aboutTitle}
           href="/about/"
-          linkLabel="Inside the lab"
+          linkLabel={copy("Inside the lab")}
         />
         <div className="intro-copy" data-reveal>
           {home.aboutParagraphs.map((p, i) => (
@@ -63,45 +64,48 @@ export default function Home({ data }) {
           ))}
         </div>
       </section>
-      
+
       <section className="section research-section">
         <SectionHeading
-          label="RESEARCH IN FOCUS"
+          label={copy("RESEARCH IN FOCUS")}
           title={home.projectTitle}
-          description="Explore the questions, materials and methods behind our projects."
+          description={copy(
+            "Explore the questions, materials and methods behind our projects.",
+          )}
           href="/services/"
-          linkLabel="All projects"
+          linkLabel={copy("All projects")}
         />
         <Projects data={projects} compact />
       </section>
       <section className="section publication-section">
         <SectionHeading
-          label="KNOWLEDGE IN PRINT"
+          label={copy("KNOWLEDGE IN PRINT")}
           title={home.papersTitle}
-          description="Research connecting computational methods with engineering applications."
+          description={copy(
+            "Research connecting computational methods with engineering applications.",
+          )}
           href="/papers/"
-          linkLabel="All publications"
+          linkLabel={copy("All publications")}
         />
         <Publications data={publications} compact />
       </section>
       <section className="section milestones-section">
         <SectionHeading
           label=""
-          title="Achievements & News"
+          title={home.achievementTitle}
           href="/achievements/"
-          linkLabel="Our achievements"
+          linkLabel={copy("Our achievements")}
         />
         <Achievements data={achievements} />
       </section>
       <section className="section collaborators-section">
         <SectionHeading
-          label="CONNECTED THROUGH COLLABORATION"
-          title="Collaborators"
-          
+          label={copy("CONNECTED THROUGH COLLABORATION")}
+          title={home.partnersTitle}
+          description={home.partnersSubtitle}
         />
         <Partners data={partners} />
       </section>
-
     </>
   );
 }

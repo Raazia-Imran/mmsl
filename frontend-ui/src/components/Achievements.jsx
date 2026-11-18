@@ -1,12 +1,15 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React from "react";
 import Icon from "./Icon.jsx";
 import { imageUrl, safeUrl } from "../content.js";
 
 export default function Achievements({ data }) {
+  const copy = useCopy();
+
   return (
     <div className="news-grid">
       {data.map((item, index) => {
-        const cover = imageUrl(item, "cover", "coverPath");
+        const cover = imageUrl(item, "cover");
         const source = safeUrl(item.storyUrl);
         return (
           <article className="news-card" key={item._id} tabIndex={0}>
@@ -18,12 +21,7 @@ export default function Achievements({ data }) {
                   alt={item.coverAlt || ""}
                   loading="lazy"
                 />
-              ) : (
-                <Icon
-                  name={["target", "book", "layers", "network"][index % 4]}
-                  size={54}
-                />
-              )}
+              ) : null}
             </div>
             <div className="news-copy">
               {item.date && <time dateTime={item.date}>{item.date}</time>}
@@ -31,7 +29,8 @@ export default function Achievements({ data }) {
               {item.description && <p>{item.description}</p>}
               {source && (
                 <a className="text-link" href={source}>
-                  Read story <Icon name="upRight" size={16} />
+                  {copy("Read story ")}
+                  <Icon name="upRight" size={16} />
                 </a>
               )}
             </div>

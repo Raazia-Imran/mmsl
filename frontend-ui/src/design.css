@@ -958,5 +958,44 @@ html[data-motion="off"] .collaborator-row[aria-hidden] {
 }
 
 /* Keep the visual flush on every alternating News card. */
-.news-grid > .news-card { padding: 0; }
-.news-visual { flex-shrink: 0; }
+.news-grid > .news-card {
+  padding: 0;
+}
+.news-visual {
+  flex-shrink: 0;
+}
+
+.service-card > .engineering-art {
+  height: clamp(160px, 17vw, 240px);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: none;
+}
+.engineering-art img {
+  display: block;
+  width: auto !important;
+  height: auto !important;
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0;
+  transform: none !important;
+}
+.expertise-glass .engineering-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.team-photo {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 16px;
+}

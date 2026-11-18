@@ -47,26 +47,28 @@ export function normalizeContent(data) {
   if (!data?.settings) return source;
   return {
     settings: {
-      ...source.settings,
       ...data.settings,
-      navigation: (data.settings.navigation || source.settings.navigation)
+      address: data.settings.address || [],
+      navigation: (data.settings.navigation || [])
         .filter((n) => n.path !== "/resources/")
         .map((n) =>
           n.path === "/clients/"
-            ? { ...n, path: "/collaborators/", label: "Collaborators" }
+            ? { ...n, path: "/collaborators/" }
             : n.path === "/projects/"
-              ? { ...n, path: "/services/", label: "Services" }
+              ? { ...n, path: "/services/" }
               : n,
         ),
     },
-    home: { ...source.home, ...(data.home || {}) },
-    pageSettings: data.pages?.length
+    home: {
+      ...(data.home || {}),
+      aboutParagraphs: data.home?.aboutParagraphs || [],
+    },
+    pageSettings: Array.isArray(data.pages)
       ? { pages: data.pages }
-      : data.pageSettings || source.pageSettings,
+      : data.pageSettings || { pages: [] },
     team: data.team || [],
-    expertise: Array.isArray(data.expertise)
-      ? data.expertise
-      : source.expertise,
+    copy: data.copy || [],
+    expertise: Array.isArray(data.expertise) ? data.expertise : [],
     ...Object.fromEntries(
       ["projects", "publications", "achievements", "partners", "resources"].map(
         (key) => [key, Array.isArray(data[key]) ? data[key] : []],
@@ -81,18 +83,20 @@ export async function fetchContent(projectId, dataset = "production", signal) {
     !/^[a-z0-9_-]+$/.test(dataset)
   )
     return source;
-  const imageProjection = '"asset": asset->{url}';
+  const imageProjection =
+    '"asset": asset->{url,metadata{dimensions{width,height}}}';
   const query = `{
-    "team": *[_type == "teamMember"] | order(order asc),
+    "copy": *[_type == "websiteCopy"] | order(order asc),
+"team": *[_type == "teamMember"] | order(order asc){...,photo{${imageProjection}}},
     "expertise": *[_type == "expertise"] | order(order asc, _id asc){...,image{${imageProjection}}},
     "pages": *[_type == "pageContent"],
     "pageSettings": *[_type == "pageSettings" && _id == "pageSettings"][0],
-    "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{...,logo{${imageProjection}}},
+    "settings": *[_type == "siteSettings" && _id == "siteSettings"][0]{...,logo{${imageProjection}},favicon{${imageProjection}},socialImage{${imageProjection}}},
     "home": *[_type == "homePage" && _id == "homePage"][0]{...,heroImage{${imageProjection}}},
     "projects": *[_type == "project"] | order(order asc, _id asc){...,image{${imageProjection}}},
     "publications": *[_type == "publication"] | order(order asc, _id asc){...,"pdfUrl":pdf.asset->url},
     "achievements": *[_type == "achievement"] | order(date desc, order asc, _id asc){...,cover{${imageProjection}}},
-    "partners": *[_type == "partner"] | order(order asc, _id asc){...,logo{${imageProjection}}},
+    "partners": *[_type == "partner"] | order(order asc, _id asc){...,logo{${imageProjection}},favicon{${imageProjection}},socialImage{${imageProjection}}},
     "resources": *[_type == "resource"] | order(order asc, _id asc){...,"fileUrl":file.asset->url}
   }`;
   const url = new URL(

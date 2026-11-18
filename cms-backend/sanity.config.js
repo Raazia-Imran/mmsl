@@ -27,6 +27,13 @@ export default defineConfig({
                   .documentId("siteSettings"),
               ),
             S.listItem()
+              .title("Website labels and messages")
+              .child(
+                S.documentTypeList("websiteCopy").title(
+                  "Website wording by area",
+                ),
+              ),
+            S.listItem()
               .title("Home Page")
               .child(
                 S.document().schemaType("homePage").documentId("homePage"),

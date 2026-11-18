@@ -1,6 +1,13 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React, { useState } from "react";
 export default function MotionPreference() {
-  const [enabled, setEnabled] = useState(() => typeof document !== "undefined" && document.documentElement.dataset.motion === "off");
+  const copy = useCopy();
+
+  const [enabled, setEnabled] = useState(
+    () =>
+      typeof document !== "undefined" &&
+      document.documentElement.dataset.motion === "off",
+  );
   function change(event) {
     const off = event.target.checked;
     setEnabled(off);
@@ -10,5 +17,17 @@ export default function MotionPreference() {
       else localStorage.removeItem("mmsl-motion");
     } catch {}
   }
-  return <><label><input type="checkbox" checked={enabled} onChange={change} /> Reduce animation on this device</label><p>Turning this on saves your choice in this browser. Clearing it removes the saved preference.</p></>;
+  return (
+    <>
+      <label>
+        <input type="checkbox" checked={enabled} onChange={change} />
+        {copy(" Reduce animation on this device")}
+      </label>
+      <p>
+        {copy(
+          "Turning this on saves your choice in this browser. Clearing it removes the saved preference.",
+        )}
+      </p>
+    </>
+  );
 }

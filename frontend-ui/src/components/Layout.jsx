@@ -1,8 +1,11 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React, { useEffect, useState } from "react";
 import { routeNames } from "../content.js";
 import Icon from "./Icon.jsx";
-import { safeUrl } from "../content.js";
+import { safeUrl, imageUrl } from "../content.js";
 export default function Layout({ settings, path, children }) {
+  const copy = useCopy();
+
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
   useEffect(() => {
@@ -26,24 +29,28 @@ export default function Layout({ settings, path, children }) {
   return (
     <>
       <a className="skip-link" href="#main">
-        Skip to content
+        {copy("Skip to content")}
       </a>
 
       <div className="nav-space">
         <header className={`header ${compact ? "compressed" : ""}`}>
           <a className="brand" href="/" aria-label={`${settings.title} home`}>
             <img
-              src={"/images/lab-mark.png"}
+              src={imageUrl(settings, "logo")}
               width="210"
               height="90"
               alt={settings.title}
             />
           </a>
-          <span className="mobile-page">{routeNames[path]}</span>
+          <span className="mobile-page">
+            {settings.navigation.find((n) => n.path === path)?.label}
+          </span>
           <button
             id="menu-toggle"
             className="menu-toggle icon-button"
-            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-label={
+              open ? copy("Close navigation") : copy("Open navigation")
+            }
             aria-expanded={open}
             aria-controls="main-nav"
             onClick={() => setOpen(!open)}
@@ -52,8 +59,8 @@ export default function Layout({ settings, path, children }) {
           </button>
           <nav
             id="main-nav"
-            className={open ? "nav open" : "nav"}
-            aria-label="Main navigation"
+            className={open ? copy("nav open") : "nav"}
+            aria-label={copy("Main navigation")}
           >
             {settings.navigation.map((n) => (
               <a
@@ -61,11 +68,15 @@ export default function Layout({ settings, path, children }) {
                 href={safeUrl(n.path) || "/"}
                 aria-current={path === n.path ? "page" : undefined}
               >
-                {n.path === "/achievements/" ? "Achievements & News" : n.label}
+                {n.label}
               </a>
             ))}
-            <a className="nav-cta" aria-current={path === "/contact/" ? "page" : undefined} href="/contact/">
-              Let’s connect
+            <a
+              className="nav-cta"
+              aria-current={path === "/contact/" ? "page" : undefined}
+              href="/contact/"
+            >
+              {copy("Let’s connect")}
               <Icon name="upRight" size={16} />
             </a>
           </nav>
@@ -77,67 +88,72 @@ export default function Layout({ settings, path, children }) {
       <footer className="footer">
         <div className="footer-top">
           <div>
-            <span className="eyebrow">LET’S CONNECT THE SCALES</span>
+            <span className="eyebrow">{copy("LET’S CONNECT THE SCALES")}</span>
             <h2>
-              Have a research
+              {copy("Have a research")}
               <br />
-              question in mind?
+              {copy("question in mind?")}
             </h2>
             <a className="button orange" href="/contact/">
-              Connect with the lab
+              {copy("Connect with the lab")}
               <Icon name="upRight" />
             </a>
           </div>
           <div className="footer-marks">
             <img
               className="footer-lab-logo"
-              src={"/images/lab-mark.png"}
+              src={imageUrl(settings, "logo")}
               alt={settings.title}
             />
-
           </div>
         </div>
         <div className="footer-grid">
           <div>
-            <h3>Visit the lab</h3>
+            <h3>{copy("Visit the lab")}</h3>
             <p>
               {settings.department}
               <br />
 
-              University Road, Karachi, Pakistan
+              {settings.address.map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
             </p>
           </div>
           <div>
-            <h3>Explore</h3>
-            <a href="/about/">About the lab</a>
-            <a href="/services/">Research projects</a>
-            <a href="/papers/">Publications</a>
+            <h3>{copy("Explore")}</h3>
+            <a href="/about/">{copy("About the lab")}</a>
+            <a href="/services/">{copy("Research projects")}</a>
+            <a href="/papers/">{copy("Publications")}</a>
           </div>
           <div>
-            <h3>Discover</h3>
-            <a href="/achievements/">Achievements</a>
-            <a href="/collaborators/">Collaborators</a>
-
+            <h3>{copy("Discover")}</h3>
+            <a href="/achievements/">{copy("Achievements")}</a>
+            <a href="/collaborators/">{copy("Collaborators")}</a>
           </div>
           <div>
-            <h3>Get in touch</h3>
+            <h3>{copy("Get in touch")}</h3>
             {settings.email ? (
               <a href={`mailto:${settings.email}`}>{settings.email}</a>
             ) : (
-              <p>Official email to be confirmed</p>
+              <p>{settings.emailPlaceholder}</p>
             )}
             <a href="/contact/">
-              Contact information <Icon name="upRight" size={14} />
+              {copy("Contact information ")}
+              <Icon name="upRight" size={14} />
             </a>
           </div>
         </div>
         <div className="footer-bottom">
           <span>
-            © {new Date().getFullYear()} Multiscale Modelling & Simulation Lab
+            {copy("© ")}
+            {new Date().getFullYear()} {settings.title}
           </span>
           <span>
-            <a href="/privacy/">Privacy & cookie settings</a>
-            <a href="#main">Back to top ↑</a>
+            <a href="/privacy/">{copy("Privacy & cookie settings")}</a>
+            <a href="#main">{copy("Back to top ↑")}</a>
           </span>
         </div>
       </footer>

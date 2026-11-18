@@ -1,9 +1,10 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React from "react";
 import { safeUrl, imageUrl } from "../content.js";
 
 function PartnerLogo({ partner, duplicate }) {
   const url = safeUrl(partner.url);
-  const logo = imageUrl(partner, "logo", "logoPath");
+  const logo = imageUrl(partner, "logo");
   const content = (
     <div className="partner-image">
       {logo ? (
@@ -27,8 +28,10 @@ function PartnerLogo({ partner, duplicate }) {
 }
 
 export default function Partners({ data }) {
+  const copy = useCopy();
+
   return (
-    <div className="collaborator-marquee" aria-label="Collaborators">
+    <div className="collaborator-marquee" aria-label={copy("Collaborators")}>
       <div className="collaborator-track">
         <ul className="collaborator-row">
           {data.map((partner) => (

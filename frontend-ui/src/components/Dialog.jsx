@@ -1,6 +1,9 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React, { useEffect, useRef } from "react";
 import Icon from "./Icon.jsx";
 export default function Dialog({ title, children, onClose }) {
+  const copy = useCopy();
+
   const ref = useRef(null);
   useEffect(() => {
     const d = ref.current;
@@ -21,12 +24,12 @@ export default function Dialog({ title, children, onClose }) {
       <div className="dialog-body">
         <button
           className="icon-button dialog-close"
-          aria-label="Close details"
+          aria-label={copy("Close details")}
           onClick={() => ref.current.close()}
         >
           <Icon name="close" />
         </button>
-        <span className="eyebrow">MULTISCALE LAB / RESEARCH</span>
+        <span className="eyebrow">{copy("MULTISCALE LAB / RESEARCH")}</span>
         <h2 id="dialog-title">{title}</h2>
         {children}
       </div>

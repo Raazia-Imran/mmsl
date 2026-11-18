@@ -1,0 +1,667 @@
+[
+  {
+    "_id": "wording-app",
+    "_type": "websiteCopy",
+    "title": "Page not found",
+    "order": 0,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "404 / PAGE NOT FOUND",
+        "value": "404 / PAGE NOT FOUND"
+      },
+      {
+        "_key": "text1",
+        "key": "A different path",
+        "value": "A different path"
+      },
+      {
+        "_key": "text2",
+        "key": "back to the lab.",
+        "value": "back to the lab."
+      },
+      {
+        "_key": "text3",
+        "key": "This page could not be found.",
+        "value": "This page could not be found."
+      },
+      {
+        "_key": "text4",
+        "key": "Return home",
+        "value": "Return home"
+      }
+    ]
+  },
+  {
+    "_id": "wording-home",
+    "_type": "websiteCopy",
+    "title": "Home page labels",
+    "order": 1,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "THE LAB / OUR APPROACH",
+        "value": "THE LAB / OUR APPROACH"
+      },
+      {
+        "_key": "text1",
+        "key": "Inside the lab",
+        "value": "Inside the lab"
+      },
+      {
+        "_key": "text2",
+        "key": "RESEARCH IN FOCUS",
+        "value": "RESEARCH IN FOCUS"
+      },
+      {
+        "_key": "text3",
+        "key": "Explore the questions, materials and methods behind our projects.",
+        "value": "Explore the questions, materials and methods behind our projects."
+      },
+      {
+        "_key": "text4",
+        "key": "All projects",
+        "value": "All projects"
+      },
+      {
+        "_key": "text5",
+        "key": "KNOWLEDGE IN PRINT",
+        "value": "KNOWLEDGE IN PRINT"
+      },
+      {
+        "_key": "text6",
+        "key": "Research connecting computational methods with engineering applications.",
+        "value": "Research connecting computational methods with engineering applications."
+      },
+      {
+        "_key": "text7",
+        "key": "All publications",
+        "value": "All publications"
+      },
+      {
+        "_key": "text8",
+        "key": "Our achievements",
+        "value": "Our achievements"
+      },
+      {
+        "_key": "text9",
+        "key": "CONNECTED THROUGH COLLABORATION",
+        "value": "CONNECTED THROUGH COLLABORATION"
+      }
+    ]
+  },
+  {
+    "_id": "wording-innerpage",
+    "_type": "websiteCopy",
+    "title": "Inner pages and Privacy policy",
+    "order": 2,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Scope and objectives",
+        "value": "Scope and objectives"
+      },
+      {
+        "_key": "text1",
+        "key": "Mission and vision",
+        "value": "Mission and vision"
+      },
+      {
+        "_key": "text2",
+        "key": "Mission",
+        "value": "Mission"
+      },
+      {
+        "_key": "text3",
+        "key": "Vision",
+        "value": "Vision"
+      },
+      {
+        "_key": "text4",
+        "key": "Academic profile",
+        "value": "Academic profile"
+      },
+      {
+        "_key": "text5",
+        "key": "Team profiles are being prepared.",
+        "value": "Team profiles are being prepared."
+      },
+      {
+        "_key": "text6",
+        "key": "Approved names, roles, biographies and photographs will be added here.",
+        "value": "Approved names, roles, biographies and photographs will be added here."
+      },
+      {
+        "_key": "text7",
+        "key": "These supplied milestones are awaiting confirmation and supporting details from the lab.",
+        "value": "These supplied milestones are awaiting confirmation and supporting details from the lab."
+      },
+      {
+        "_key": "text8",
+        "key": "Contact enquiries",
+        "value": "Contact enquiries"
+      },
+      {
+        "_key": "text9",
+        "key": "When the contact form is enabled, it asks for your name, email address and message so the lab can respond. Please do not include sensitive personal information.",
+        "value": "When the contact form is enabled, it asks for your name, email address and message so the lab can respond. Please do not include sensitive personal information."
+      },
+      {
+        "_key": "text10",
+        "key": "Submitted form data is sent through Web3Forms to the lab\u2019s configured contact address. Its processing is subject to",
+        "value": "Submitted form data is sent through Web3Forms to the lab\u2019s configured contact address. Its processing is subject to"
+      },
+      {
+        "_key": "text11",
+        "key": "Web3Forms\u2019 privacy policy",
+        "value": "Web3Forms\u2019 privacy policy"
+      },
+      {
+        "_key": "text12",
+        "key": ". If the form is unavailable, no enquiry is submitted.",
+        "value": ". If the form is unavailable, no enquiry is submitted."
+      },
+      {
+        "_key": "text13",
+        "key": "Website services",
+        "value": "Website services"
+      },
+      {
+        "_key": "text14",
+        "key": "The website uses Vercel for hosting and Sanity for public content delivery. These providers may process technical request information such as IP addresses and browser details to operate and protect their services.",
+        "value": "The website uses Vercel for hosting and Sanity for public content delivery. These providers may process technical request information such as IP addresses and browser details to operate and protect their services."
+      },
+      {
+        "_key": "text15",
+        "key": "Cookies and animation preferences",
+        "value": "Cookies and animation preferences"
+      },
+      {
+        "_key": "text16",
+        "key": "This website does not add advertising cookies or optional analytics. Browser preferences and security features provided by the hosting service may apply.",
+        "value": "This website does not add advertising cookies or optional analytics. Browser preferences and security features provided by the hosting service may apply."
+      },
+      {
+        "_key": "text17",
+        "key": "Contact and retention",
+        "value": "Contact and retention"
+      },
+      {
+        "_key": "text18",
+        "key": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated.",
+        "value": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated."
+      }
+    ]
+  },
+  {
+    "_id": "wording-contact",
+    "_type": "websiteCopy",
+    "title": "Contact form",
+    "order": 3,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Your message could not be sent. Please try again shortly.",
+        "value": "Your message could not be sent. Please try again shortly."
+      },
+      {
+        "_key": "text1",
+        "key": "VISIT THE LAB",
+        "value": "VISIT THE LAB"
+      },
+      {
+        "_key": "text2",
+        "key": "Let\u2019s start",
+        "value": "Let\u2019s start"
+      },
+      {
+        "_key": "text3",
+        "key": "a conversation.",
+        "value": "a conversation."
+      },
+      {
+        "_key": "text4",
+        "key": "For research enquiries, collaboration and information about the lab.",
+        "value": "For research enquiries, collaboration and information about the lab."
+      },
+      {
+        "_key": "text5",
+        "key": "Find us",
+        "value": "Find us"
+      },
+      {
+        "_key": "text6",
+        "key": "Email the lab",
+        "value": "Email the lab"
+      },
+      {
+        "_key": "text7",
+        "key": "Phone",
+        "value": "Phone"
+      },
+      {
+        "_key": "text8",
+        "key": "Lab head",
+        "value": "Lab head"
+      },
+      {
+        "_key": "text9",
+        "key": "SEND AN ENQUIRY",
+        "value": "SEND AN ENQUIRY"
+      },
+      {
+        "_key": "text10",
+        "key": "What would you like to explore?",
+        "value": "What would you like to explore?"
+      },
+      {
+        "_key": "text11",
+        "key": "Your name",
+        "value": "Your name"
+      },
+      {
+        "_key": "text12",
+        "key": "Full name",
+        "value": "Full name"
+      },
+      {
+        "_key": "text13",
+        "key": "Email address",
+        "value": "Email address"
+      },
+      {
+        "_key": "text14",
+        "key": "you@example.com",
+        "value": "you@example.com"
+      },
+      {
+        "_key": "text15",
+        "key": "Your message",
+        "value": "Your message"
+      },
+      {
+        "_key": "text16",
+        "key": "Tell us a little about your enquiry",
+        "value": "Tell us a little about your enquiry"
+      },
+      {
+        "_key": "text17",
+        "key": "By sending this form, you agree to the processing of your enquiry as described in our ",
+        "value": "By sending this form, you agree to the processing of your enquiry as described in our "
+      },
+      {
+        "_key": "text18",
+        "key": "privacy notice",
+        "value": "privacy notice"
+      },
+      {
+        "_key": "text19",
+        "key": ".",
+        "value": "."
+      },
+      {
+        "_key": "text20",
+        "key": "The form will open when the lab confirms its official contact email.",
+        "value": "The form will open when the lab confirms its official contact email."
+      },
+      {
+        "_key": "text21",
+        "key": "Sending your message",
+        "value": "Sending your message"
+      },
+      {
+        "_key": "text22",
+        "key": "Send enquiry",
+        "value": "Send enquiry"
+      },
+      {
+        "_key": "text23",
+        "key": "Your message has been sent. Thank you for contacting the lab.",
+        "value": "Your message has been sent. Thank you for contacting the lab."
+      },
+      {
+        "_key": "generic-error",
+        "key": "Something went wrong. Please try again.",
+        "value": "Something went wrong. Please try again."
+      }
+    ]
+  },
+  {
+    "_id": "wording-layout",
+    "_type": "websiteCopy",
+    "title": "Header and footer",
+    "order": 4,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Skip to content",
+        "value": "Skip to content"
+      },
+      {
+        "_key": "text1",
+        "key": "Close navigation",
+        "value": "Close navigation"
+      },
+      {
+        "_key": "text2",
+        "key": "Open navigation",
+        "value": "Open navigation"
+      },
+      {
+        "_key": "text3",
+        "key": "nav open",
+        "value": "nav open"
+      },
+      {
+        "_key": "text4",
+        "key": "Main navigation",
+        "value": "Main navigation"
+      },
+      {
+        "_key": "text5",
+        "key": "Let\u2019s connect",
+        "value": "Let\u2019s connect"
+      },
+      {
+        "_key": "text6",
+        "key": "LET\u2019S CONNECT THE SCALES",
+        "value": "LET\u2019S CONNECT THE SCALES"
+      },
+      {
+        "_key": "text7",
+        "key": "Have a research",
+        "value": "Have a research"
+      },
+      {
+        "_key": "text8",
+        "key": "question in mind?",
+        "value": "question in mind?"
+      },
+      {
+        "_key": "text9",
+        "key": "Connect with the lab",
+        "value": "Connect with the lab"
+      },
+      {
+        "_key": "text10",
+        "key": "Visit the lab",
+        "value": "Visit the lab"
+      },
+      {
+        "_key": "text11",
+        "key": "Explore",
+        "value": "Explore"
+      },
+      {
+        "_key": "text12",
+        "key": "About the lab",
+        "value": "About the lab"
+      },
+      {
+        "_key": "text13",
+        "key": "Research projects",
+        "value": "Research projects"
+      },
+      {
+        "_key": "text14",
+        "key": "Publications",
+        "value": "Publications"
+      },
+      {
+        "_key": "text15",
+        "key": "Discover",
+        "value": "Discover"
+      },
+      {
+        "_key": "text16",
+        "key": "Achievements",
+        "value": "Achievements"
+      },
+      {
+        "_key": "text17",
+        "key": "Collaborators",
+        "value": "Collaborators"
+      },
+      {
+        "_key": "text18",
+        "key": "Get in touch",
+        "value": "Get in touch"
+      },
+      {
+        "_key": "text19",
+        "key": "Contact information ",
+        "value": "Contact information "
+      },
+      {
+        "_key": "text20",
+        "key": "\u00a9 ",
+        "value": "\u00a9 "
+      },
+      {
+        "_key": "text21",
+        "key": "Privacy & cookie settings",
+        "value": "Privacy & cookie settings"
+      },
+      {
+        "_key": "text22",
+        "key": "Back to top \u2191",
+        "value": "Back to top \u2191"
+      }
+    ]
+  },
+  {
+    "_id": "wording-projects",
+    "_type": "websiteCopy",
+    "title": "Projects labels",
+    "order": 5,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Current projects",
+        "value": "Current projects"
+      },
+      {
+        "_key": "text1",
+        "key": "Projects will be published here.",
+        "value": "Projects will be published here."
+      },
+      {
+        "_key": "text2",
+        "key": "Project details ",
+        "value": "Project details "
+      },
+      {
+        "_key": "text3",
+        "key": "Expertise",
+        "value": "Expertise"
+      },
+      {
+        "_key": "text4",
+        "key": "Ask about this research",
+        "value": "Ask about this research"
+      }
+    ]
+  },
+  {
+    "_id": "wording-publications",
+    "_type": "websiteCopy",
+    "title": "Research paper labels",
+    "order": 6,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Search publications",
+        "value": "Search publications"
+      },
+      {
+        "_key": "text1",
+        "key": "Search by title, author or journal",
+        "value": "Search by title, author or journal"
+      },
+      {
+        "_key": "text2",
+        "key": "Publication year",
+        "value": "Publication year"
+      },
+      {
+        "_key": "text3",
+        "key": "All years",
+        "value": "All years"
+      },
+      {
+        "_key": "text4",
+        "key": "Sort publications",
+        "value": "Sort publications"
+      },
+      {
+        "_key": "text5",
+        "key": "Newest first",
+        "value": "Newest first"
+      },
+      {
+        "_key": "text6",
+        "key": "Oldest first",
+        "value": "Oldest first"
+      },
+      {
+        "_key": "text7",
+        "key": "publication",
+        "value": "publication"
+      },
+      {
+        "_key": "text8",
+        "key": "publications",
+        "value": "publications"
+      },
+      {
+        "_key": "text9",
+        "key": "Clear filters ",
+        "value": "Clear filters "
+      },
+      {
+        "_key": "text10",
+        "key": "RESEARCH",
+        "value": "RESEARCH"
+      },
+      {
+        "_key": "text11",
+        "key": "PAPER",
+        "value": "PAPER"
+      },
+      {
+        "_key": "text12",
+        "key": "JOURNAL ARTICLE",
+        "value": "JOURNAL ARTICLE"
+      },
+      {
+        "_key": "text13",
+        "key": "View paper",
+        "value": "View paper"
+      },
+      {
+        "_key": "text14",
+        "key": "PDF",
+        "value": "PDF"
+      },
+      {
+        "_key": "text15",
+        "key": "PDF pending",
+        "value": "PDF pending"
+      },
+      {
+        "_key": "text16",
+        "key": "DOI",
+        "value": "DOI"
+      },
+      {
+        "_key": "text17",
+        "key": "No matching publications",
+        "value": "No matching publications"
+      },
+      {
+        "_key": "text18",
+        "key": "Try a different title, author or year.",
+        "value": "Try a different title, author or year."
+      },
+      {
+        "_key": "text19",
+        "key": "Authors",
+        "value": "Authors"
+      },
+      {
+        "_key": "text20",
+        "key": "Published in",
+        "value": "Published in"
+      },
+      {
+        "_key": "text21",
+        "key": ", ",
+        "value": ", "
+      },
+      {
+        "_key": "text22",
+        "key": "Abstract",
+        "value": "Abstract"
+      },
+      {
+        "_key": "text23",
+        "key": "Open paper PDF",
+        "value": "Open paper PDF"
+      },
+      {
+        "_key": "text24",
+        "key": "The paper PDF and complete bibliographic details will be added after confirmation by the lab.",
+        "value": "The paper PDF and complete bibliographic details will be added after confirmation by the lab."
+      }
+    ]
+  },
+  {
+    "_id": "wording-achievements",
+    "_type": "websiteCopy",
+    "title": "Achievements labels",
+    "order": 7,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Read story ",
+        "value": "Read story "
+      }
+    ]
+  },
+  {
+    "_id": "wording-dialog",
+    "_type": "websiteCopy",
+    "title": "Dialog labels",
+    "order": 8,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": "Close details",
+        "value": "Close details"
+      },
+      {
+        "_key": "text1",
+        "key": "MULTISCALE LAB / RESEARCH",
+        "value": "MULTISCALE LAB / RESEARCH"
+      }
+    ]
+  },
+  {
+    "_id": "wording-motionpreference",
+    "_type": "websiteCopy",
+    "title": "MotionPreference labels",
+    "order": 9,
+    "entries": [
+      {
+        "_key": "text0",
+        "key": " Reduce animation on this device",
+        "value": " Reduce animation on this device"
+      },
+      {
+        "_key": "text1",
+        "key": "Turning this on saves your choice in this browser. Clearing it removes the saved preference.",
+        "value": "Turning this on saves your choice in this browser. Clearing it removes the saved preference."
+      }
+    ]
+  }
+]

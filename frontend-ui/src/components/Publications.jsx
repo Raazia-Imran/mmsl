@@ -1,9 +1,12 @@
+import { useCopy } from "./ContentCopy.jsx";
 import React, { useState, useMemo, useCallback } from "react";
 import Icon from "./Icon.jsx";
 import FilterSelect from "./FilterSelect.jsx";
 import Dialog from "./Dialog.jsx";
 import { safeUrl } from "../content.js";
 export default function Publications({ data, compact = false }) {
+  const copy = useCopy();
+
   const [query, setQuery] = useState("");
   const [year, setYear] = useState("all");
   const [sort, setSort] = useState("newest");
@@ -32,19 +35,19 @@ export default function Publications({ data, compact = false }) {
             <Icon name="search" />
             <input
               type="search"
-              aria-label="Search publications"
-              placeholder="Search by title, author or journal"
+              aria-label={copy("Search publications")}
+              placeholder={copy("Search by title, author or journal")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </label>
           <div className="paper-filters">
             <FilterSelect
-              label="Publication year"
+              label={copy("Publication year")}
               value={year}
               onChange={setYear}
               options={[
-                { value: "all", label: "All years" },
+                { value: "all", label: copy("All years") },
                 ...[
                   ...new Set(
                     data.map((paper) => paper.year).filter(Number.isFinite),
@@ -58,12 +61,12 @@ export default function Publications({ data, compact = false }) {
               ]}
             />
             <FilterSelect
-              label="Sort publications"
+              label={copy("Sort publications")}
               value={sort}
               onChange={setSort}
               options={[
-                { value: "newest", label: "Newest first" },
-                { value: "oldest", label: "Oldest first" },
+                { value: "newest", label: copy("Newest first") },
+                { value: "oldest", label: copy("Oldest first") },
               ]}
             />
           </div>
@@ -72,7 +75,7 @@ export default function Publications({ data, compact = false }) {
       <div className="publication-count" aria-live="polite">
         <span>
           {filtered.length}{" "}
-          {filtered.length === 1 ? "publication" : "publications"}
+          {filtered.length === 1 ? copy("publication") : copy("publications")}
         </span>
         {!compact && (query || year !== "all" || sort !== "newest") && (
           <button
@@ -82,7 +85,8 @@ export default function Publications({ data, compact = false }) {
               setSort("newest");
             }}
           >
-            Clear filters <Icon name="close" size={13} />
+            {copy("Clear filters ")}
+            <Icon name="close" size={13} />
           </button>
         )}
       </div>
@@ -91,9 +95,9 @@ export default function Publications({ data, compact = false }) {
           <article className="publication-card" key={p._id} data-reveal>
             <div className="publication-cover" aria-hidden="true">
               <span>
-                RESEARCH
+                {copy("RESEARCH")}
                 <br />
-                PAPER
+                {copy("PAPER")}
               </span>
               <Icon name="book" size={45} />
               <strong>{p.year}</strong>
@@ -101,7 +105,7 @@ export default function Publications({ data, compact = false }) {
             </div>
             <div className="publication-body">
               <div className="publication-topline">
-                <span>JOURNAL ARTICLE</span>
+                <span>{copy("JOURNAL ARTICLE")}</span>
                 <span>{String(i + 1).padStart(2, "0")}</span>
               </div>
               <p className="journal">{p.journal}</p>
@@ -114,7 +118,7 @@ export default function Publications({ data, compact = false }) {
               {p.abstract && <p className="abstract-preview">{p.abstract}</p>}
               <div className="publication-actions">
                 <button className="text-link" onClick={() => setSelected(p)}>
-                  View paper
+                  {copy("View paper")}
                   <Icon name="upRight" size={16} />
                 </button>
                 {safeUrl(p.pdfUrl || p.pdfPath) ? (
@@ -125,12 +129,12 @@ export default function Publications({ data, compact = false }) {
                     rel="noopener noreferrer"
                   >
                     <Icon name="download" size={16} />
-                    PDF
+                    {copy("PDF")}
                   </a>
                 ) : (
                   <span className="unavailable">
                     <Icon name="file" size={14} />
-                    PDF pending
+                    {copy("PDF pending")}
                   </span>
                 )}
                 {safeUrl(p.url) ||
@@ -143,7 +147,7 @@ export default function Publications({ data, compact = false }) {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    DOI
+                    {copy("DOI")}
                     <Icon name="upRight" size={14} />
                   </a>
                 ) : null}
@@ -155,15 +159,15 @@ export default function Publications({ data, compact = false }) {
       {!filtered.length && (
         <div className="empty-state">
           <Icon name="search" size={30} />
-          <h3>No matching publications</h3>
-          <p>Try a different title, author or year.</p>
+          <h3>{copy("No matching publications")}</h3>
+          <p>{copy("Try a different title, author or year.")}</p>
         </div>
       )}
       {selected && (
         <Dialog title={selected.title} onClose={close}>
           <dl className="paper-facts">
             <div>
-              <dt>Authors</dt>
+              <dt>{copy("Authors")}</dt>
               <dd>
                 {selected.authorList?.length
                   ? selected.authorList.join(", ")
@@ -171,21 +175,23 @@ export default function Publications({ data, compact = false }) {
               </dd>
             </div>
             <div>
-              <dt>Published in</dt>
+              <dt>{copy("Published in")}</dt>
               <dd>
-                {selected.journal}, {selected.year}
+                {selected.journal}
+                {copy(", ")}
+                {selected.year}
               </dd>
             </div>
             {selected.doi && (
               <div>
-                <dt>DOI</dt>
+                <dt>{copy("DOI")}</dt>
                 <dd>{selected.doi}</dd>
               </div>
             )}
           </dl>
           {selected.abstract && (
             <>
-              <h3>Abstract</h3>
+              <h3>{copy("Abstract")}</h3>
               <p>{selected.abstract}</p>
             </>
           )}
@@ -196,13 +202,14 @@ export default function Publications({ data, compact = false }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Open paper PDF
+              {copy("Open paper PDF")}
               <Icon name="download" />
             </a>
           ) : (
             <p className="content-note">
-              The paper PDF and complete bibliographic details will be added
-              after confirmation by the lab.
+              {copy(
+                "The paper PDF and complete bibliographic details will be added after confirmation by the lab.",
+              )}
             </p>
           )}
         </Dialog>

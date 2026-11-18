@@ -1,6 +1,9 @@
+import { useCopy } from "../components/ContentCopy.jsx";
 import React, { useState } from "react";
 import Icon from "../components/Icon.jsx";
 export default function Contact({ settings }) {
+  const copy = useCopy();
+
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
   const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
@@ -21,8 +24,8 @@ export default function Contact({ settings }) {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: "Multiscale Lab website enquiry",
-          from_name: "Multiscale Lab website",
+          subject: settings.title,
+          from_name: settings.title,
           name: fields.get("name"),
           email: fields.get("email"),
           message: fields.get("message"),
@@ -32,30 +35,33 @@ export default function Contact({ settings }) {
       const payload = await response.json();
       if (!response.ok || !payload.success)
         throw new Error(
-          "Your message could not be sent. Please try again shortly.",
+          copy("Your message could not be sent. Please try again shortly."),
         );
       setStatus("success");
       form.reset();
     } catch (err) {
       setStatus("error");
-      setError(err.message || "Something went wrong. Please try again.");
+      setError(err.message || copy("Something went wrong. Please try again."));
     }
   }
   return (
     <div className="contact-layout">
       <div className="contact-information">
-        <span className="eyebrow">VISIT THE LAB</span>
+        <span className="eyebrow">{copy("VISIT THE LAB")}</span>
         <h2>
-          Let’s start
-          <br />a conversation.
+          {copy("Let’s start")}
+          <br />
+          {copy("a conversation.")}
         </h2>
         <p>
-          For research enquiries, collaboration and information about the lab.
+          {copy(
+            "For research enquiries, collaboration and information about the lab.",
+          )}
         </p>
         <div className="contact-item">
           <Icon name="pin" />
           <div>
-            <h3>Find us</h3>
+            <h3>{copy("Find us")}</h3>
             <address>
               {settings.address.map((x, i) => (
                 <React.Fragment key={i}>
@@ -69,60 +75,61 @@ export default function Contact({ settings }) {
         <div className="contact-item">
           <Icon name="mail" />
           <div>
-            <h3>Email the lab</h3>
+            <h3>{copy("Email the lab")}</h3>
             {settings.email ? (
               <a href={`mailto:${settings.email}`}>{settings.email}</a>
             ) : (
-              <p>Official email to be confirmed</p>
+              <p>{settings.emailPlaceholder}</p>
             )}
           </div>
         </div>
         {settings.phone && (
           <div className="contact-item">
-            <span>Phone</span>
+            <span>{copy("Phone")}</span>
             <p>{settings.phone}</p>
+            {settings.phoneNote && <p>{settings.phoneNote}</p>}
           </div>
         )}
         {settings.labHead && (
           <div className="contact-item">
-            <span>Lab head</span>
+            <span>{copy("Lab head")}</span>
             <p>{settings.labHead}</p>
           </div>
         )}
       </div>
       <form className="contact-form" onSubmit={submit}>
-        <span className="eyebrow">SEND AN ENQUIRY</span>
-        <h3>What would you like to explore?</h3>
+        <span className="eyebrow">{copy("SEND AN ENQUIRY")}</span>
+        <h3>{copy("What would you like to explore?")}</h3>
         <label>
-          Your name
+          {copy("Your name")}
           <input
             name="name"
             autoComplete="name"
             required
             maxLength="120"
-            placeholder="Full name"
+            placeholder={copy("Full name")}
           />
         </label>
         <label>
-          Email address
+          {copy("Email address")}
           <input
             name="email"
             type="email"
             autoComplete="email"
             required
             maxLength="254"
-            placeholder="you@example.com"
+            placeholder={copy("you@example.com")}
           />
         </label>
         <label>
-          Your message
+          {copy("Your message")}
           <textarea
             name="message"
             required
             minLength="10"
             maxLength="5000"
             rows="5"
-            placeholder="Tell us a little about your enquiry"
+            placeholder={copy("Tell us a little about your enquiry")}
           />
         </label>
         <input
@@ -135,11 +142,16 @@ export default function Contact({ settings }) {
         <p className="form-notice">
           {accessKey ? (
             <span>
-              By sending this form, you agree to the processing of your enquiry
-              as described in our <a href="/privacy/">privacy notice</a>.
+              {copy(
+                "By sending this form, you agree to the processing of your enquiry as described in our ",
+              )}
+              <a href="/privacy/">{copy("privacy notice")}</a>
+              {copy(".")}
             </span>
           ) : (
-            "The form will open when the lab confirms its official contact email."
+            copy(
+              "The form will open when the lab confirms its official contact email.",
+            )
           )}
         </p>
         <button
@@ -147,7 +159,9 @@ export default function Contact({ settings }) {
           type="submit"
           disabled={!accessKey || status === "sending"}
         >
-          {status === "sending" ? "Sending your message" : "Send enquiry"}
+          {status === "sending"
+            ? copy("Sending your message")
+            : copy("Send enquiry")}
           <Icon name={status === "sending" ? "atom" : "upRight"} />
         </button>
         <p
@@ -156,7 +170,9 @@ export default function Contact({ settings }) {
           className={status === "error" ? "form-error" : "form-success"}
         >
           {status === "success"
-            ? "Your message has been sent. Thank you for contacting the lab."
+            ? copy(
+                "Your message has been sent. Thank you for contacting the lab.",
+              )
             : error}
         </p>
       </form>

@@ -65,3 +65,39 @@ test("imported document IDs are unique and require editorial review", () => {
   assert.equal(new Set(all.map((d) => d._id)).size, all.length);
   assert.ok(all.every((d) => d.reviewStatus === "needs-review"));
 });
+
+test("CMS removals do not restore bundled text or media", () => {
+  const data = normalizeContent({
+    settings: { title: "Client lab", navigation: [], address: [] },
+    home: {},
+    pages: [],
+    expertise: [],
+    copy: [],
+  });
+  assert.equal(data.settings.logo, undefined);
+  assert.equal(data.home.heroImage, undefined);
+  assert.equal(data.home.heroDescription, undefined);
+  assert.deepEqual(data.pageSettings.pages, []);
+  assert.deepEqual(data.expertise, []);
+  assert.deepEqual(data.copy, []);
+});
+test("published copy and resolved media survive the CMS boundary", () => {
+  const photo = {
+    asset: { url: "https://cdn.sanity.io/images/test/production/photo.webp" },
+  };
+  const copy = [{ entries: [{ key: "Expertise", value: "Our capabilities" }] }];
+  const data = normalizeContent({
+    settings: { title: "Client lab", logo: photo },
+    home: { heroImage: photo },
+    copy,
+    team: [{ _id: "person", photo, profileUrl: "https://example.org/profile" }],
+    projects: [{ _id: "project", image: photo }],
+    expertise: [{ _id: "service", image: photo }],
+  });
+  assert.deepEqual(data.copy, copy);
+  assert.deepEqual(data.settings.logo, photo);
+  assert.deepEqual(data.home.heroImage, photo);
+  assert.deepEqual(data.team[0].photo, photo);
+  assert.deepEqual(data.projects[0].image, photo);
+  assert.deepEqual(data.expertise[0].image, photo);
+});

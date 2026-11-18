@@ -47,6 +47,33 @@ const schema = (name, title, fields) =>
   });
 export const schemaTypes = [
   defineType({
+    name: "websiteCopy",
+    title: "Website wording",
+    type: "document",
+    fields: [
+      text("title", "Website area", { readOnly: true }),
+      defineField({
+        name: "entries",
+        title: "Text and messages",
+        type: "array",
+        of: [
+          {
+            type: "object",
+            fields: [
+              text("key", "Original wording for identification", {
+                readOnly: true,
+              }),
+              area("value", "Website text"),
+            ],
+            preview: { select: { title: "key", subtitle: "value" } },
+          },
+        ],
+      }),
+      order,
+    ],
+    preview: { select: { title: "title" } },
+  }),
+  defineType({
     name: "pageContent",
     title: "Page content",
     type: "document",
@@ -55,6 +82,8 @@ export const schemaTypes = [
       text("kicker", "Small heading"),
       text("title", "Page title", { validation: required }),
       area("description", "Page introduction"),
+      text("seoTitle", "Search result title"),
+      area("seoDescription", "Search result description"),
       ...["mission", "vision"].map((name) => ({
         ...area(
           name,
@@ -76,6 +105,7 @@ export const schemaTypes = [
       text("role", "Role"),
       area("biography", "Biography"),
       image("photo", "Profile photograph"),
+      text("photoAlt", "Photograph description"),
       url("profileUrl", "Academic profile link"),
       order,
     ],
@@ -114,10 +144,14 @@ export const schemaTypes = [
       text("title", "Lab name", { validation: required }),
       text("university", "University", { validation: required }),
       text("department", "Department"),
-      image("logo", "Original lab logo"),
-      text("logoPath", "Bundled logo path", { readOnly: true }),
+      image("logo", "Lab logo used in header and footer"),
+      image("favicon", "Browser tab icon"),
+      defineField({ name: "cmsMediaMigrated", type: "boolean", hidden: true }),
+      image("socialImage", "Social sharing image"),
+      text("socialImageAlt", "Social sharing image description"),
+
       text("emailPlaceholder", "Placeholder shown until email is confirmed"),
-      text("nedLogoPath", "NED logo path", { readOnly: true }),
+
       text("email", "Contact email", { validation: (Rule) => Rule.email() }),
       text("phone", "Phone"),
       text("phoneNote", "Phone clarification"),
@@ -184,7 +218,8 @@ export const schemaTypes = [
       text("heroTitle", "Hero title", { validation: required }),
       area("heroDescription", "Hero introduction"),
       image("heroImage", "Hero image"),
-      text("heroImagePath", "Bundled hero image path", { readOnly: true }),
+      text("heroImageAlt", "Hero image description"),
+
       text("aboutTitle", "About heading"),
       defineField({
         name: "aboutParagraphs",
@@ -199,11 +234,9 @@ export const schemaTypes = [
         ["achievementTitle", "Achievements heading"],
         ["partnersTitle", "Clients heading"],
         ["partnersSubtitle", "Clients introduction"],
-        ["resourcesTitle", "Resources heading"],
-        ["contactTitle", "Contact heading"],
+
         ["primaryActionLabel", "Projects button"],
         ["secondaryActionLabel", "About button"],
-        ["contactActionLabel", "Contact button"],
       ].map(([n, t]) => text(n, t)),
       status,
     ],
@@ -212,16 +245,6 @@ export const schemaTypes = [
   schema("expertise", "Expertise card", [
     text("title", "Expertise title", { validation: required }),
     area("description", "Short service description"),
-    text("icon", "Engineering icon", {
-      options: {
-        list: [
-          { title: "Structure and reinforcement", value: "structure" },
-          { title: "Fluid flow", value: "flow" },
-          { title: "Molecular network", value: "material" },
-        ],
-      },
-      initialValue: "structure",
-    }),
     image("image", "Replacement icon or image"),
     text("imageAlt", "Image description"),
     ...common,
@@ -299,7 +322,7 @@ export const schemaTypes = [
       validation: required,
     }),
     image("logo", "Logo"),
-    text("logoPath", "Bundled logo path", { readOnly: true }),
+
     text("sourceAlt", "Original source alt text", {
       readOnly: true,
       description:

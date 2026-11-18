@@ -35,21 +35,21 @@ const escape = (s) =>
     .replaceAll('"', "&quot;");
 for (const route of [...paths, "/404/"]) {
   const known = paths.includes(route);
+  const page = content.pageSettings?.pages?.find((page) => page.path === route);
   const title =
     route === "/"
       ? content.settings.title
-      : `${routeNames[route] || "Page not found"} | ${content.settings.title}`;
-  const page = content.pageSettings?.pages?.find((page) => page.path === route);
+      : `${page?.seoTitle || page?.title || routeNames[route] || ""} | ${content.settings.title}`;
   const description =
     route === "/"
       ? content.home.heroDescription
-      : page?.description?.trim() ||
-        `${routeNames[route] || "Page not found"} | ${content.settings.title}`;
+      : page?.seoDescription?.trim() ||
+        page?.description?.trim() ||
+        `${page?.seoTitle || page?.title || routeNames[route] || ""} | ${content.settings.title}`;
   const robots = publicIndexing && known ? "index,follow" : "noindex,nofollow";
   const url = origin + route;
-  const image = origin + "/brand/social-card.png";
-  const imageAlt =
-    "Multiscale Modelling & Simulation Lab title over an engineering simulation illustration.";
+  const image = content.settings.socialImage?.asset?.url || "";
+  const imageAlt = content.settings.socialImageAlt || "";
   const meta = (name, value, type = "name") =>
     `<meta ${type}="${name}" content="${escape(value)}"/>`;
   const og = (name, value) => meta(`og:${name}`, value, "property");
@@ -75,9 +75,17 @@ for (const route of [...paths, "/404/"]) {
       `<link rel="canonical" href="${escape(url)}"/>`,
       og("url", url),
       og("image", image),
-      og("image:type", "image/png"),
-      og("image:width", "1200"),
-      og("image:height", "630"),
+
+      og(
+        "image:width",
+        content.settings.socialImage?.asset?.metadata?.dimensions?.width ||
+          "1200",
+      ),
+      og(
+        "image:height",
+        content.settings.socialImage?.asset?.metadata?.dimensions?.height ||
+          "630",
+      ),
       og("image:alt", imageAlt),
       meta("twitter:image", image),
       meta("twitter:image:alt", imageAlt),
@@ -93,7 +101,12 @@ for (const route of [...paths, "/404/"]) {
     const json = JSON.stringify(schema).replaceAll("<", "\\u003c");
     tags.push(`<script type="application/ld+json">${json}</script>`);
   }
+  const favicon = content.settings.favicon?.asset?.url || "";
   const html = template
+    .replace(
+      "<!--site-icons-->",
+      `<link rel="icon" href="${escape(favicon)}"/><link rel="apple-touch-icon" href="${escape(favicon)}"/>`,
+    )
     .replace("<!--app-html-->", () => render(route))
     .replace("<!--page-meta-->", () => tags.join("\n"))
     .replace(

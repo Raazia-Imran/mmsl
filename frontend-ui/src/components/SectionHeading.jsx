@@ -5,7 +5,7 @@ export default function SectionHeading({
   title,
   description,
   href,
-  linkLabel = "Explore more",
+  linkLabel,
 }) {
   return (
     <div className="section-heading" data-reveal>
