@@ -10,6 +10,13 @@ const documents = [
   data.settings,
   data.home,
   data.pageSettings,
+  ...data.pageSettings.pages.map((p) => ({
+    ...p,
+    _id: p._id || "page-" + p.path.split("/")[1],
+    _type: "pageContent",
+  })),
+  ...(data.expertise || []),
+  ...(data.copy || []),
   ...data.projects,
   ...data.publications,
   ...data.achievements,
@@ -61,6 +68,7 @@ for (const doc of incoming) {
           ? [["logoPath", "logo"]]
           : [];
   for (const [pathField, imageField] of assetPaths) {
+    if (doc[imageField]?.asset || !doc[pathField]) continue;
     const local = path.join(root, "frontend-ui/public", doc[pathField]);
     const asset = await client.assets.upload("image", await readFile(local), {
       filename: path.basename(local),

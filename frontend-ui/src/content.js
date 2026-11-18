@@ -41,7 +41,23 @@ export function safeUrl(value) {
   }
 }
 export function imageUrl(item, imageField, pathField) {
-  return safeUrl(item?.[imageField]?.asset?.url) || safeUrl(item?.[pathField]);
+  const image = item?.[imageField];
+  const src = safeUrl(image?.asset?.url);
+  const dimensions = image?.asset?.metadata?.dimensions;
+  if (src && image.crop && dimensions?.width && dimensions?.height) {
+    const { left = 0, right = 0, top = 0, bottom = 0 } = image.crop;
+    const { width, height } = dimensions;
+    const rect = [
+      Math.round(left * width),
+      Math.round(top * height),
+      Math.max(1, Math.round((1 - left - right) * width)),
+      Math.max(1, Math.round((1 - top - bottom) * height)),
+    ];
+    const url = new URL(src);
+    url.searchParams.set("rect", rect.join(","));
+    return url.href;
+  }
+  return src || safeUrl(item?.[pathField]);
 }
 export function normalizeContent(data) {
   if (!data?.settings) return source;
@@ -84,7 +100,7 @@ export async function fetchContent(projectId, dataset = "production", signal) {
   )
     return source;
   const imageProjection =
-    '"asset": asset->{url,metadata{dimensions{width,height}}}';
+    '...,"asset": asset->{url,metadata{dimensions{width,height}}}';
   const query = `{
     "copy": *[_type == "websiteCopy"] | order(order asc),
 "team": *[_type == "teamMember"] | order(order asc){...,photo{${imageProjection}}},

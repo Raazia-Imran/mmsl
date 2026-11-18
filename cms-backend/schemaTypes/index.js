@@ -238,6 +238,9 @@ export const schemaTypes = [
         ["primaryActionLabel", "Projects button"],
         ["secondaryActionLabel", "About button"],
       ].map(([n, t]) => text(n, t)),
+      ...["resourcesTitle", "contactTitle", "contactActionLabel"].map((name) =>
+        text(name, name, { hidden: true }),
+      ),
       status,
     ],
     preview: { select: { title: "heroTitle" } },

@@ -111,15 +111,26 @@ export default function Layout({ settings, path, children }) {
           <div>
             <h3>{copy("Visit the lab")}</h3>
             <p>
-              {settings.department}
-              <br />
-
-              {settings.address.map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
+              {[
+                settings.title,
+                settings.department,
+                settings.university,
+                ...settings.address.filter(
+                  (line) =>
+                    ![
+                      settings.title,
+                      settings.department,
+                      settings.university,
+                    ].includes(line),
+                ),
+              ]
+                .filter(Boolean)
+                .map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
             </p>
           </div>
           <div>

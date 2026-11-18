@@ -2,12 +2,7 @@
   "settings": {
     "_id": "siteSettings",
     "_type": "siteSettings",
-    "address": [
-      "Multiscale Modelling & Simulation Lab",
-      "Department of Mechanical Engineering",
-      "NED University of Engineering and Technology",
-      "University Road, Karachi-75270, Pakistan"
-    ],
+    "address": ["University Road, Karachi-75270, Pakistan"],
     "department": "Department of Mechanical Engineering",
     "email": "",
     "emailPlaceholder": "Official email to be confirmed",
@@ -57,7 +52,7 @@
       },
       {
         "_key": "achievements",
-        "label": "Achievements",
+        "label": "Achievements & News",
         "path": "/achievements/"
       },
       {
@@ -176,7 +171,7 @@
         "_key": "6",
         "_type": "pageContent",
         "description": "Research questions, ideas for collaboration and enquiries are welcome.",
-        "kicker": "LET’S CONNECT",
+        "kicker": "LET\u2019S CONNECT",
         "path": "/contact/",
         "title": "Contact the lab"
       },
@@ -225,7 +220,10 @@
         "path": "/team/",
         "title": "The team behind the research."
       }
-    ]
+    ],
+    "_id": "pageSettings",
+    "_type": "pageSettings",
+    "reviewStatus": "needs-review"
   },
   "team": [],
   "expertise": [
@@ -435,13 +433,13 @@
         },
         {
           "_key": "text10",
-          "key": "Submitted form data is sent through Web3Forms to the lab’s configured contact address. Its processing is subject to",
-          "value": "Submitted form data is sent through Web3Forms to the lab’s configured contact address. Its processing is subject to"
+          "key": "Submitted form data is sent through Web3Forms to the lab\u2019s configured contact address. Its processing is subject to",
+          "value": "Submitted form data is sent through Web3Forms to the lab\u2019s configured contact address. Its processing is subject to"
         },
         {
           "_key": "text11",
-          "key": "Web3Forms’ privacy policy",
-          "value": "Web3Forms’ privacy policy"
+          "key": "Web3Forms\u2019 privacy policy",
+          "value": "Web3Forms\u2019 privacy policy"
         },
         {
           "_key": "text12",
@@ -475,8 +473,8 @@
         },
         {
           "_key": "text18",
-          "key": "The lab’s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated.",
-          "value": "The lab’s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated."
+          "key": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated.",
+          "value": "The lab\u2019s official contact address and enquiry retention arrangements will be published after confirmation. This notice should be reviewed by the lab before the contact form is activated."
         }
       ],
       "order": 2,
@@ -498,8 +496,8 @@
         },
         {
           "_key": "text2",
-          "key": "Let’s start",
-          "value": "Let’s start"
+          "key": "Let\u2019s start",
+          "value": "Let\u2019s start"
         },
         {
           "_key": "text3",
@@ -646,13 +644,13 @@
         },
         {
           "_key": "text5",
-          "key": "Let’s connect",
-          "value": "Let’s connect"
+          "key": "Let\u2019s connect",
+          "value": "Let\u2019s connect"
         },
         {
           "_key": "text6",
-          "key": "LET’S CONNECT THE SCALES",
-          "value": "LET’S CONNECT THE SCALES"
+          "key": "LET\u2019S CONNECT THE SCALES",
+          "value": "LET\u2019S CONNECT THE SCALES"
         },
         {
           "_key": "text7",
@@ -721,8 +719,8 @@
         },
         {
           "_key": "text20",
-          "key": "© ",
-          "value": "© "
+          "key": "\u00a9 ",
+          "value": "\u00a9 "
         },
         {
           "_key": "text21",
@@ -731,8 +729,8 @@
         },
         {
           "_key": "text22",
-          "key": "Back to top ↑",
-          "value": "Back to top ↑"
+          "key": "Back to top \u2191",
+          "value": "Back to top \u2191"
         }
       ],
       "order": 4,
@@ -1281,7 +1279,7 @@
       "_id": "resource-equipment",
       "_type": "resource",
       "category": "Equipment",
-      "description": "Explore the lab’s computational and experimental resources.",
+      "description": "Explore the lab\u2019s computational and experimental resources.",
       "fileUrl": null,
       "order": 2,
       "reviewStatus": "needs-review",

@@ -1,6 +1,7 @@
 import { useCopy } from "../components/ContentCopy.jsx";
 import React, { useState } from "react";
 import Icon from "../components/Icon.jsx";
+import { safeUrl } from "../content.js";
 export default function Contact({ settings }) {
   const copy = useCopy();
 
@@ -63,12 +64,26 @@ export default function Contact({ settings }) {
           <div>
             <h3>{copy("Find us")}</h3>
             <address>
-              {settings.address.map((x, i) => (
-                <React.Fragment key={i}>
-                  {x}
-                  <br />
-                </React.Fragment>
-              ))}
+              {[
+                settings.title,
+                settings.department,
+                settings.university,
+                ...settings.address.filter(
+                  (line) =>
+                    ![
+                      settings.title,
+                      settings.department,
+                      settings.university,
+                    ].includes(line),
+                ),
+              ]
+                .filter(Boolean)
+                .map((x, i) => (
+                  <React.Fragment key={i}>
+                    {x}
+                    <br />
+                  </React.Fragment>
+                ))}
             </address>
           </div>
         </div>
@@ -96,6 +111,19 @@ export default function Contact({ settings }) {
             <p>{settings.labHead}</p>
           </div>
         )}
+        {settings.socialLinks
+          ?.filter((link) => safeUrl(link.url))
+          .map((link, i) => (
+            <a
+              className="text-link"
+              key={link._key || i}
+              href={safeUrl(link.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
+          ))}
       </div>
       <form className="contact-form" onSubmit={submit}>
         <span className="eyebrow">{copy("SEND AN ENQUIRY")}</span>

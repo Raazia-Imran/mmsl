@@ -16,14 +16,14 @@ if (client.config().projectId !== "4isekt9n")
 const legacyPages = await client.fetch(
   'coalesce(*[_id == "pageSettings"][0].pages, [])',
 );
-const pageSources = data.pageSettings.pages.map(
-  (page) =>
-    legacyPages.find((existingPage) => existingPage.path === page.path) || page,
-);
+const pageSources = data.pageSettings.pages.map((page) => ({
+  ...legacyPages.find((existingPage) => existingPage.path === page.path),
+  ...page,
+}));
 const all = [
   ...pageSources.map((p) => ({
     ...p,
-    _id: "page-" + p.path.split("/")[1],
+    _id: p._id || "page-" + p.path.split("/")[1],
     _type: "pageContent",
   })),
   data.settings,
@@ -31,6 +31,7 @@ const all = [
   ...(data.pageSettings ? [data.pageSettings] : []),
   ...data.projects,
   ...(data.expertise || []),
+  ...(data.copy || []),
   ...data.publications,
   ...data.achievements,
   ...data.partners,
@@ -56,6 +57,7 @@ for (const doc of missing) {
           ? [["logoPath", "logo"]]
           : [];
   for (const [localField, imageField] of images) {
+    if (doc[imageField]?.asset || !doc[localField]) continue;
     const file = path.join(root, "frontend-ui/public", doc[localField]);
     const asset = await client.assets.upload("image", await readFile(file), {
       filename: path.basename(file),
