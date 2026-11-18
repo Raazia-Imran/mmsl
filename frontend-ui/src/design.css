@@ -46,9 +46,9 @@ html { scroll-padding-top: 85px; }
 :root:active-view-transition main { view-transition-name: lab-content; }
 ::view-transition-group(lab-content) { animation: none; }
 ::view-transition-image-pair(lab-content) { isolation: isolate; }
-::view-transition-old(lab-content) { animation: none; }
-::view-transition-new(lab-content) { animation: page-enter 220ms cubic-bezier(.2,.75,.25,1) both; }
-@keyframes page-enter { from { opacity: 0; transform: translateY(4px); } }
+::view-transition-old(lab-content) { display: none; }
+::view-transition-new(lab-content) { animation: page-enter 180ms cubic-bezier(.2,.75,.25,1) both; }
+@keyframes page-enter { from { opacity: .97; transform: translateY(3px); } }
 main:focus { outline: none; }
 
 .hero {
