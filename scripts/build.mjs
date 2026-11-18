@@ -39,16 +39,63 @@ for (const route of [...paths, "/404/"]) {
     route === "/"
       ? content.settings.title
       : `${routeNames[route] || "Page not found"} | ${content.settings.title}`;
+  const page = content.pageSettings?.pages?.find((page) => page.path === route);
   const description =
     route === "/"
       ? content.home.heroDescription
-      : `${routeNames[route] || "Page not found"} — ${content.settings.title}, ${content.settings.university}.`;
+      : page?.description?.trim() ||
+        `${routeNames[route] || "Page not found"} | ${content.settings.title}`;
   const robots = publicIndexing && known ? "index,follow" : "noindex,nofollow";
   const url = origin + route;
-  const tags = `<title>${escape(title)}</title><meta name="description" content="${escape(description)}"/><meta name="robots" content="${robots}"/><meta property="og:title" content="${escape(title)}"/><meta property="og:description" content="${escape(description)}"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/>${origin ? `<link rel="canonical" href="${escape(url)}"/><meta property="og:url" content="${escape(url)}"/><meta property="og:image" content="${escape(origin + "/brand/social-card.png")}"/>` : ""}`;
+  const image = origin + "/brand/social-card.png";
+  const imageAlt =
+    "Multiscale Modelling & Simulation Lab title over an engineering simulation illustration.";
+  const meta = (name, value, type = "name") =>
+    `<meta ${type}="${name}" content="${escape(value)}"/>`;
+  const og = (name, value) => meta(`og:${name}`, value, "property");
+  const tags = [
+    `<title>${escape(title)}</title>`,
+    meta("description", description),
+    meta("robots", robots),
+    og("title", title),
+    og("description", description),
+    og("type", "website"),
+    og("site_name", content.settings.title),
+    og("locale", "en_PK"),
+    meta("twitter:card", "summary_large_image"),
+    meta("twitter:title", title),
+    meta("twitter:description", description),
+  ];
+  const twitterSite = process.env.VITE_TWITTER_SITE || env.VITE_TWITTER_SITE;
+  if (/^@[a-zA-Z0-9_]{1,15}$/.test(twitterSite || "")) {
+    tags.push(meta("twitter:site", twitterSite));
+  }
+  if (origin && known) {
+    tags.push(
+      `<link rel="canonical" href="${escape(url)}"/>`,
+      og("url", url),
+      og("image", image),
+      og("image:type", "image/png"),
+      og("image:width", "1200"),
+      og("image:height", "630"),
+      og("image:alt", imageAlt),
+      meta("twitter:image", image),
+      meta("twitter:image:alt", imageAlt),
+    );
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": route === "/" ? "WebSite" : "WebPage",
+      name: title,
+      description,
+      url,
+      inLanguage: "en-PK",
+    };
+    const json = JSON.stringify(schema).replaceAll("<", "\\u003c");
+    tags.push(`<script type="application/ld+json">${json}</script>`);
+  }
   const html = template
-    .replace("<!--app-html-->", render(route))
-    .replace("<!--page-meta-->", tags)
+    .replace("<!--app-html-->", () => render(route))
+    .replace("<!--page-meta-->", () => tags.join("\n"))
     .replace(
       "</head>",
       `<script id="initial-content" type="application/json">${JSON.stringify(content).replaceAll("<", "\\u003c")}</script></head>`,

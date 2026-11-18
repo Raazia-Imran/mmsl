@@ -3,7 +3,11 @@ import Icon from "./Icon.jsx";
 import Dialog from "./Dialog.jsx";
 import ProjectArtwork from "./ProjectArtwork.jsx";
 
-const artwork = ["flow", "structure", "material"];
+const projectArt = {
+  "project-nano": "flow",
+  "project-composite": "structure",
+  "project-steel": "material",
+};
 const expertise = [
   ["Finite Element Analysis (FEA)", "structure"],
   ["Computational Fluid Dynamics (CFD)", "flow"],
@@ -18,13 +22,21 @@ export default function Projects({ data, compact = false }) {
     <>
       {!compact && <h2>Current projects</h2>}
       <div className="service-deck project-deck">
-        {data.map((project, index) => (
-          <button className="service-card" key={project._id} onClick={() => setSelected(project)}>
-            <ProjectArtwork styleName={artwork[index % artwork.length]} />
+        {data.map((project) => (
+          <button
+            className="service-card"
+            key={project._id}
+            onClick={() => setSelected(project)}
+          >
+            {projectArt[project._id] && (
+              <ProjectArtwork styleName={projectArt[project._id]} />
+            )}
             <span className="service-card-copy">
               <strong>{project.title}</strong>
               <span>{project.summary}</span>
-              <span className="card-action">Project details <Icon name="upRight" size={16} /></span>
+              <span className="card-action">
+                Project details <Icon name="upRight" size={16} />
+              </span>
             </span>
           </button>
         ))}
@@ -36,7 +48,9 @@ export default function Projects({ data, compact = false }) {
             {expertise.map(([name, design]) => (
               <article className="service-card expertise-card" key={name}>
                 <ProjectArtwork styleName={design} />
-                <div className="service-card-copy"><h3>{name}</h3></div>
+                <div className="service-card-copy">
+                  <h3>{name}</h3>
+                </div>
               </article>
             ))}
           </div>

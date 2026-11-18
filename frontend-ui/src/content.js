@@ -46,7 +46,19 @@ export function imageUrl(item, imageField, pathField) {
 export function normalizeContent(data) {
   if (!data?.settings) return source;
   return {
-    settings: { ...source.settings, ...data.settings, navigation: (data.settings.navigation || source.settings.navigation).filter(n => n.path !== "/resources/").map(n => n.path === "/clients/" ? {...n,path:"/collaborators/",label:"Collaborators"} : n.path === "/projects/" ? {...n,path:"/services/",label:"Services"} : n) },
+    settings: {
+      ...source.settings,
+      ...data.settings,
+      navigation: (data.settings.navigation || source.settings.navigation)
+        .filter((n) => n.path !== "/resources/")
+        .map((n) =>
+          n.path === "/clients/"
+            ? { ...n, path: "/collaborators/", label: "Collaborators" }
+            : n.path === "/projects/"
+              ? { ...n, path: "/services/", label: "Services" }
+              : n,
+        ),
+    },
     home: { ...source.home, ...(data.home || {}) },
     pageSettings: data.pages?.length
       ? { pages: data.pages }
@@ -75,7 +87,7 @@ export async function fetchContent(projectId, dataset = "production", signal) {
     "home": *[_type == "homePage" && _id == "homePage"][0]{...,heroImage{${imageProjection}}},
     "projects": *[_type == "project"] | order(order asc, _id asc),
     "publications": *[_type == "publication"] | order(order asc, _id asc){...,"pdfUrl":pdf.asset->url},
-    "achievements": *[_type == "achievement"] | order(order asc, _id asc),
+    "achievements": *[_type == "achievement"] | order(date desc, order asc, _id asc){...,cover{${imageProjection}}},
     "partners": *[_type == "partner"] | order(order asc, _id asc){...,logo{${imageProjection}}},
     "resources": *[_type == "resource"] | order(order asc, _id asc){...,"fileUrl":file.asset->url}
   }`;

@@ -56,8 +56,13 @@ export const schemaTypes = [
       text("title", "Page title", { validation: required }),
       area("description", "Page introduction"),
       ...["mission", "vision"].map((name) => ({
-        ...area(name, name === "mission" ? "Mission statement" : "Vision statement"),
-        hidden: ({ document }) => document?.path !== "/about/" && document?._id?.replace(/^drafts\./, "") !== "page-about",
+        ...area(
+          name,
+          name === "mission" ? "Mission statement" : "Vision statement",
+        ),
+        hidden: ({ document }) =>
+          document?.path !== "/about/" &&
+          document?._id?.replace(/^drafts\./, "") !== "page-about",
       })),
     ],
     preview: { select: { title: "title", subtitle: "path" } },
@@ -241,6 +246,13 @@ export const schemaTypes = [
     }),
     area("abstract", "Abstract"),
     defineField({
+      name: "topics",
+      title: "Research topics",
+      type: "array",
+      of: [{ type: "string" }],
+      validation: (Rule) => Rule.unique(),
+    }),
+    defineField({
       name: "pdf",
       title: "Publication PDF with permission to share",
       type: "file",
@@ -254,9 +266,13 @@ export const schemaTypes = [
     url("url", "DOI or publication URL"),
     ...common,
   ]),
-  schema("achievement", "Achievement", [
+  schema("achievement", "Achievement or news item", [
     text("title", "Achievement", { validation: required }),
     area("description", "Additional details"),
+    defineField({ name: "date", title: "Publication date", type: "date" }),
+    image("cover", "Approved cover photograph"),
+    text("coverAlt", "Cover photograph description"),
+    url("storyUrl", "Story or supporting source link"),
     ...common,
   ]),
   schema("partner", "Client / partner", [
