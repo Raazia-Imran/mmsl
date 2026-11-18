@@ -9,7 +9,7 @@ export default function Achievements({ data }) {
         const cover = imageUrl(item, "cover", "coverPath");
         const source = safeUrl(item.storyUrl);
         return (
-          <article className="news-card" key={item._id}>
+          <article className="news-card" key={item._id} tabIndex={0}>
             {cover && (
               <img
                 className="news-cover"

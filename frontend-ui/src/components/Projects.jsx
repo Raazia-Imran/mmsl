@@ -9,9 +9,9 @@ const projectArt = {
   "project-steel": "material",
 };
 const expertise = [
-  ["Finite Element Analysis (FEA)", "structure"],
+  ["Finite Element Analysis (FEA)", "mesh"],
   ["Computational Fluid Dynamics (CFD)", "flow"],
-  ["Molecular Dynamics (MD)", "material"],
+  ["Molecular Dynamics (MD)", "network"],
 ];
 export default function Projects({ data, compact = false }) {
   const [selected, setSelected] = useState(null);
@@ -47,7 +47,9 @@ export default function Projects({ data, compact = false }) {
           <div className="service-deck">
             {expertise.map(([name, design]) => (
               <article className="service-card expertise-card" key={name}>
-                <ProjectArtwork styleName={design} />
+                <span className="expertise-symbol">
+                  <Icon name={design} size={52} />
+                </span>
                 <div className="service-card-copy">
                   <h3>{name}</h3>
                 </div>

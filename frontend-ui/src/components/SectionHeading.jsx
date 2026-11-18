@@ -10,10 +10,12 @@ export default function SectionHeading({
   return (
     <div className="section-heading" data-reveal>
       <div>
-        <span className="eyebrow">
-          <i />
-          {label}
-        </span>
+        {label?.trim() && (
+          <span className="eyebrow">
+            <i />
+            {label}
+          </span>
+        )}
         <h2>{title}</h2>
         {description && <p>{description}</p>}
       </div>

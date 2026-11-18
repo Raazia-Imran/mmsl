@@ -64,18 +64,31 @@ export default function InnerPage({ path, data }) {
     <>
       <section className="page-hero">
         <div>
-
           <h1>
-            {(path === "/achievements/" ? "Achievements & News" : path === "/contact/" ? "Contact the lab" : path === "/collaborators/" ? "Collaborators" : path === "/services/" ? "Services" : title)?.split("\n").map((x, i) => (
-              <React.Fragment key={i}>
-                {i > 0 && <br />}
-                {i === 1 ? <em>{x}</em> : x}
-              </React.Fragment>
-            ))}
+            {(path === "/achievements/"
+              ? "Achievements & News"
+              : path === "/contact/"
+                ? "Contact the lab"
+                : path === "/collaborators/"
+                  ? "Collaborators"
+                  : path === "/services/"
+                    ? "Services"
+                    : title
+            )
+              ?.split("\n")
+              .map((x, i) => (
+                <React.Fragment key={i}>
+                  {i > 0 && <br />}
+                  {i === 1 ? <em>{x}</em> : x}
+                </React.Fragment>
+              ))}
           </h1>
-          <p>{["/collaborators/","/services/"].includes(path) ? null : description}</p>
+          <p>
+            {["/collaborators/", "/services/"].includes(path)
+              ? null
+              : description}
+          </p>
         </div>
-
       </section>
       {path === "/about/" ? (
         <>
@@ -90,17 +103,18 @@ export default function InnerPage({ path, data }) {
               ))}
             </div>
           </section>
-          <section className="section purpose-section" aria-label="Mission and vision">
+          <section
+            className="section purpose-section"
+            aria-label="Mission and vision"
+          >
             {["mission", "vision"].map((field) => (
-              <article className="purpose-card" key={field}>
-                <Icon name={field === "mission" ? "layers" : "upRight"} size={25} />
+              <article className="purpose-card" key={field} tabIndex={0}>
+                <Icon name={field === "mission" ? "target" : "eye"} size={25} />
                 <h2>{field === "mission" ? "Mission" : "Vision"}</h2>
                 {page?.[field]?.trim() && <p>{page[field]}</p>}
               </article>
             ))}
           </section>
-          
-
         </>
       ) : (
         <section className="section inner-content">
@@ -138,7 +152,6 @@ export default function InnerPage({ path, data }) {
           )}
           {path === "/collaborators/" && (
             <>
-              
               <Partners data={data.partners} />
             </>
           )}

@@ -11,7 +11,7 @@ export default function ProjectArtwork({ styleName }) {
         loading="lazy"
         decoding="async"
       />
-      <span className="art-label">Illustration</span>
+      <span className="art-label">AI-generated image</span>
     </span>
   );
 }

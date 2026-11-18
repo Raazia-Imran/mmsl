@@ -108,10 +108,7 @@
       "order": 1,
       "reviewStatus": "needs-review",
       "discipline": "Fluid dynamics",
-      "methods": [
-        "Molecular dynamics",
-        "Continuum modelling"
-      ]
+      "methods": ["Molecular dynamics", "Continuum modelling"]
     },
     {
       "_id": "project-composite",
@@ -122,10 +119,7 @@
       "order": 2,
       "reviewStatus": "needs-review",
       "discipline": "Materials engineering",
-      "methods": [
-        "Composite mechanics",
-        "Multiscale analysis"
-      ]
+      "methods": ["Composite mechanics", "Multiscale analysis"]
     },
     {
       "_id": "project-steel",
@@ -136,10 +130,7 @@
       "order": 3,
       "reviewStatus": "needs-review",
       "discipline": "Microstructure evolution",
-      "methods": [
-        "Phase field",
-        "CALPHAD"
-      ]
+      "methods": ["Phase field", "CALPHAD"]
     }
   ],
   "publications": [
@@ -209,7 +200,7 @@
       "_id": "partner-1",
       "_type": "partner",
       "title": "Client logo 1",
-      "logoPath": "/images/collaborators/1.png",
+      "logoPath": "/images/clients/1.png",
       "sourceAlt": "Meekat International (Ansys Partner)",
       "order": 1,
       "reviewStatus": "needs-review"
@@ -218,7 +209,7 @@
       "_id": "partner-2",
       "_type": "partner",
       "title": "Client logo 2",
-      "logoPath": "/images/collaborators/2.png",
+      "logoPath": "/images/clients/2.png",
       "sourceAlt": "Simulation Software Leaders",
       "order": 2,
       "reviewStatus": "needs-review"
@@ -227,7 +218,7 @@
       "_id": "partner-3",
       "_type": "partner",
       "title": "Client logo 3",
-      "logoPath": "/images/collaborators/3.png",
+      "logoPath": "/images/clients/3.png",
       "sourceAlt": "Simulation Ecosystem",
       "order": 3,
       "reviewStatus": "needs-review"
@@ -236,7 +227,7 @@
       "_id": "partner-4",
       "_type": "partner",
       "title": "Client logo 4",
-      "logoPath": "/images/collaborators/4.png",
+      "logoPath": "/images/clients/4.png",
       "sourceAlt": "Pakistani Industry Leaders",
       "order": 4,
       "reviewStatus": "needs-review"
@@ -245,7 +236,7 @@
       "_id": "partner-5",
       "_type": "partner",
       "title": "Client logo 5",
-      "logoPath": "/images/collaborators/5.png",
+      "logoPath": "/images/clients/5.png",
       "sourceAlt": "Pakistani Industry Leaders",
       "order": 5,
       "reviewStatus": "needs-review"
@@ -254,7 +245,7 @@
       "_id": "partner-6",
       "_type": "partner",
       "title": "Client logo 6",
-      "logoPath": "/images/collaborators/6.png",
+      "logoPath": "/images/clients/6.png",
       "sourceAlt": "Pakistani Industry Leaders",
       "order": 6,
       "reviewStatus": "needs-review"

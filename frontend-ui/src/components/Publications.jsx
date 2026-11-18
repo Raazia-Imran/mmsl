@@ -1,11 +1,11 @@
 import React, { useState, useMemo, useCallback } from "react";
 import Icon from "./Icon.jsx";
+import FilterSelect from "./FilterSelect.jsx";
 import Dialog from "./Dialog.jsx";
 import { safeUrl } from "../content.js";
 export default function Publications({ data, compact = false }) {
   const [query, setQuery] = useState("");
   const [year, setYear] = useState("all");
-  const [topic, setTopic] = useState("");
   const [sort, setSort] = useState("newest");
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
@@ -17,13 +17,12 @@ export default function Publications({ data, compact = false }) {
             `${p.title} ${p.authors} ${p.journal} ${(p.authorList || []).join(" ")}`
               .toLowerCase()
               .includes(query.trim().toLowerCase()) &&
-            (!topic || p.topics?.includes(topic)) &&
             (year === "all" || String(p.year) === year),
         )
         .sort((a, b) =>
           sort === "oldest" ? a.year - b.year : b.year - a.year,
         ),
-    [data, query, year, topic, sort],
+    [data, query, year, sort],
   );
   return (
     <>
@@ -40,45 +39,33 @@ export default function Publications({ data, compact = false }) {
             />
           </label>
           <div className="paper-filters">
-            <select
-              aria-label="Publication year"
+            <FilterSelect
+              label="Publication year"
               value={year}
-              onChange={(event) => setYear(event.target.value)}
-            >
-              <option value="all">All years</option>
-              {[
-                ...new Set(
-                  data.map((paper) => paper.year).filter(Number.isFinite),
-                ),
-              ]
-                .sort((a, b) => b - a)
-                .map((value) => (
-                  <option key={value} value={value}>
-                    {value}
-                  </option>
-                ))}
-            </select>
-            <select
-              aria-label="Research topic"
-              value={topic}
-              onChange={(event) => setTopic(event.target.value)}
-              disabled={!data.some((paper) => paper.topics?.length)}
-            >
-              <option value="">All research topics</option>
-              {[...new Set(data.flatMap((paper) => paper.topics || []))]
-                .sort()
-                .map((value) => (
-                  <option key={value}>{value}</option>
-                ))}
-            </select>
-            <select
-              aria-label="Sort publications"
+              onChange={setYear}
+              options={[
+                { value: "all", label: "All years" },
+                ...[
+                  ...new Set(
+                    data.map((paper) => paper.year).filter(Number.isFinite),
+                  ),
+                ]
+                  .sort((a, b) => b - a)
+                  .map((year) => ({
+                    value: String(year),
+                    label: String(year),
+                  })),
+              ]}
+            />
+            <FilterSelect
+              label="Sort publications"
               value={sort}
-              onChange={(event) => setSort(event.target.value)}
-            >
-              <option value="newest">Newest first</option>
-              <option value="oldest">Oldest first</option>
-            </select>
+              onChange={setSort}
+              options={[
+                { value: "newest", label: "Newest first" },
+                { value: "oldest", label: "Oldest first" },
+              ]}
+            />
           </div>
         </div>
       )}
@@ -87,19 +74,17 @@ export default function Publications({ data, compact = false }) {
           {filtered.length}{" "}
           {filtered.length === 1 ? "publication" : "publications"}
         </span>
-        {!compact &&
-          (query || topic || year !== "all" || sort !== "newest") && (
-            <button
-              onClick={() => {
-                setQuery("");
-                setYear("all");
-                setTopic("");
-                setSort("newest");
-              }}
-            >
-              Clear filters <Icon name="close" size={13} />
-            </button>
-          )}
+        {!compact && (query || year !== "all" || sort !== "newest") && (
+          <button
+            onClick={() => {
+              setQuery("");
+              setYear("all");
+              setSort("newest");
+            }}
+          >
+            Clear filters <Icon name="close" size={13} />
+          </button>
+        )}
       </div>
       <div className="publication-grid">
         {filtered.map((p, i) => (
