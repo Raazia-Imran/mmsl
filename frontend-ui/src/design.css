@@ -956,3 +956,7 @@ html[data-motion="off"] .collaborator-row[aria-hidden] {
     margin: 0;
   }
 }
+
+/* Keep the visual flush on every alternating News card. */
+.news-grid > .news-card { padding: 0; }
+.news-visual { flex-shrink: 0; }
