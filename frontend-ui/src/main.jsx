@@ -2,6 +2,7 @@ import React from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./styles.css";
+import "./design.css";
 const root = document.getElementById("root");
 const path = window.location.pathname.endsWith("/")
   ? window.location.pathname

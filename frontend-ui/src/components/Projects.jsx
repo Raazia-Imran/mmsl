@@ -1,19 +1,47 @@
 import React, { useState, useCallback } from "react";
 import Icon from "./Icon.jsx";
 import Dialog from "./Dialog.jsx";
-import { Lattice } from "./ScaleExplorer.jsx";
+import ProjectArtwork from "./ProjectArtwork.jsx";
+
+const artwork = ["flow", "structure", "material"];
+const expertise = [
+  ["Finite Element Analysis (FEA)", "structure"],
+  ["Computational Fluid Dynamics (CFD)", "flow"],
+  ["Molecular Dynamics (MD)", "material"],
+];
 export default function Projects({ data, compact = false }) {
-  const [active, setActive] = useState(0);
   const [selected, setSelected] = useState(null);
   const close = useCallback(() => setSelected(null), []);
   if (!data.length)
     return <p className="empty-state">Projects will be published here.</p>;
-  const p = data[active] || data[0];
   return (
     <>
-      <h2>Current projects</h2>
-      <div className="service-deck">{data.map(project => <button className="service-card" key={project._id} onClick={() => setSelected(project)}><strong>{project.title}</strong><span>{project.summary}</span><Icon name="upRight" /></button>)}</div>
-      {!compact && <><h2>Expertise</h2><div className="service-deck">{["Finite Element Analysis (FEA)", "Computational Fluid Dynamics (CFD)", "Molecular Dynamics (MD)"].map(method => <article className="service-card" key={method}><strong>{method}</strong></article>)}</div></>}
+      {!compact && <h2>Current projects</h2>}
+      <div className="service-deck project-deck">
+        {data.map((project, index) => (
+          <button className="service-card" key={project._id} onClick={() => setSelected(project)}>
+            <ProjectArtwork styleName={artwork[index % artwork.length]} />
+            <span className="service-card-copy">
+              <strong>{project.title}</strong>
+              <span>{project.summary}</span>
+              <span className="card-action">Project details <Icon name="upRight" size={16} /></span>
+            </span>
+          </button>
+        ))}
+      </div>
+      {!compact && (
+        <>
+          <h2>Expertise</h2>
+          <div className="service-deck">
+            {expertise.map(([name, design]) => (
+              <article className="service-card expertise-card" key={name}>
+                <ProjectArtwork styleName={design} />
+                <div className="service-card-copy"><h3>{name}</h3></div>
+              </article>
+            ))}
+          </div>
+        </>
+      )}
       {selected && (
         <Dialog title={selected.title} onClose={close}>
           <div className="tags">

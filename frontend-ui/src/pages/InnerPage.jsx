@@ -90,6 +90,15 @@ export default function InnerPage({ path, data }) {
               ))}
             </div>
           </section>
+          <section className="section purpose-section" aria-label="Mission and vision">
+            {["mission", "vision"].map((field) => (
+              <article className="purpose-card" key={field}>
+                <Icon name={field === "mission" ? "layers" : "upRight"} size={25} />
+                <h2>{field === "mission" ? "Mission" : "Vision"}</h2>
+                {page?.[field]?.trim() && <p>{page[field]}</p>}
+              </article>
+            ))}
+          </section>
           
 
         </>

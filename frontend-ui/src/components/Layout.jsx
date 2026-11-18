@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { routeNames } from "../content.js";
 import Icon from "./Icon.jsx";
-import { imageUrl, safeUrl } from "../content.js";
+import { safeUrl } from "../content.js";
 export default function Layout({ settings, path, children }) {
   const [open, setOpen] = useState(false);
   const [compact, setCompact] = useState(false);
@@ -71,7 +71,7 @@ export default function Layout({ settings, path, children }) {
           </nav>
         </header>
       </div>
-      <main id="main" tabIndex="-1" key={path}>
+      <main id="main" tabIndex="-1">
         {children}
       </main>
       <footer className="footer">

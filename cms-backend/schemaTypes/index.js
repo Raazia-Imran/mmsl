@@ -55,6 +55,10 @@ export const schemaTypes = [
       text("kicker", "Small heading"),
       text("title", "Page title", { validation: required }),
       area("description", "Page introduction"),
+      ...["mission", "vision"].map((name) => ({
+        ...area(name, name === "mission" ? "Mission statement" : "Vision statement"),
+        hidden: ({ document }) => document?.path !== "/about/" && document?._id?.replace(/^drafts\./, "") !== "page-about",
+      })),
     ],
     preview: { select: { title: "title", subtitle: "path" } },
   }),
