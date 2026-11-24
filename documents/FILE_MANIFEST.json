@@ -1,5 +1,11 @@
 [
     {
+        "path":  ".gitattributes",
+        "bytes":  107,
+        "sha256":  "09b177223be79ba1c13fddf7407eb8d7289a985b0b96c366029070da7b5bfee8",
+        "git_blob":  "0a2e019e4828282456da39c20ffdcd8229725ea3"
+    },
+    {
         "path":  "AI_RESUME_HERE.md",
         "bytes":  3571,
         "sha256":  "2242461083670e03af80a139b279bc74af6e94d4d7e8a5f1c057ab512f6edb98",
