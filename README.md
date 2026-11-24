@@ -1,84 +1,114 @@
-# Multiscale Modelling and Simulation Lab
+<div align="center">
+  <img src="frontend-ui/public/images/logo.png" alt="Multiscale Lab" width="340" />
+  <h1>Multiscale Modelling &amp; Simulation Lab</h1>
+  <p><strong>Small scales. Bigger possibilities.</strong></p>
+  <p>NED University of Engineering and Technology · Department of Mechanical Engineering</p>
+  <p><a href="https://multiscale-lab.vercel.app/">Review website</a> · <a href="https://multiscale-ned-lab.sanity.studio/">Content Studio</a> · <a href="https://www.sanity.io/manage/project/4isekt9n">Sanity project</a></p>
+</div>
 
-React and Sanity website for the Multiscale Modelling and Simulation Lab at NED University of Engineering and Technology. The lab’s original orange, blue and white branding is retained. The redesign adds original scientific artwork, an interactive scale explorer, project panels, publication details, resource categories, a compact floating navigation bar and accessible motion.
+---
 
-## Structure
+A research lab website built with **React, Vite and Sanity**, with static HTML for each route and interactive navigation, scientific visuals, publication search and Lab Highlights. Vercel hosts the frontend; Sanity hosts the content and editor.
 
-| Location | Responsibility |
-| --- | --- |
-| `frontend-ui/src/components` | Reusable interface components and research sections |
-| `frontend-ui/src/pages` | Page composition and contact workflow |
-| `frontend-ui/src/hooks` | Navigation and progressive reveal behaviour |
-| `frontend-ui/src/lib` | Frontend configuration |
-| `frontend-ui/src/content.js` | Published CMS query, content normalization and safe URLs |
-| `frontend-ui/src/content.json` | Migration baseline and offline fallback |
-| `frontend-ui/public` | Self-hosted assets, branding, platform headers and redirects |
-| `cms-backend/schemaTypes` | Sanity content models |
-| `cms-backend/seed/import.mjs` | Authenticated CLI migration restricted to the selected lab project |
-| `scripts` | Prerendering, asset generation, build checks and token-based import alternative |
-| `tests` | Content preservation, empty CMS collections and URL checks |
-| `source-reference` | Original PHP/CSS reference; not part of the deployed frontend |
-| `docs` | Setup, ownership, content review and asset provenance |
+> **Status: client review, not final launch.** Mission and Vision, publication details, contact information, media permissions and the client hosting/domain arrangement remain pending. Conceptual artwork is illustrative and must not be presented as measured research output.
 
-## Run locally
+## Explore the website
 
-Node.js 22.12 or newer is required; CI uses Node.js 24.
+| Page | Route | Purpose |
+| --- | --- | --- |
+| Home | `/` | Lab introduction, research and featured content |
+| About | `/about/` | Scope, Mission and Vision |
+| Services | `/services/` | Research projects and FEA, CFD and MD expertise |
+| Research Papers | `/papers/` | Searchable publications and detail dialogs |
+| Lab Highlights | `/achievements/` | Separate Achievements and News carousels |
+| Collaborators | `/collaborators/` | Approved organization logos and links |
+| Team | `/team/` | CMS-managed people and profiles |
+| Contact | `/contact/` | Contact information and optional enquiry form |
+| Privacy | `/privacy/` | Editable information-handling notice |
 
-```cmd
-git clone https://github.com/Raazia-Imran/new-lab.git
-cd new-lab
+There are **nine routes plus a 404 page**. Resources records are retained in Sanity, but `/resources/` is not a current route. Legacy PHP, Projects and Clients redirects are defined in `vercel.json`.
+
+## Start developing
+
+Use Node.js **22.12 through 24**; CI uses **24**. Run commands from the repository root:
+
+```sh
+git clone https://github.com/Raazia-Imran/mmsl.git
+cd mmsl
 npm ci
 npm run dev
 ```
 
-The selected public Sanity project is `4isekt9n`, organization `o6odkcj36`, dataset `production`. Public identifiers are configuration, not credentials. No authentication token belongs in browser variables.
-
-```cmd
-npm test
-npm run build
-node scripts/check-build.mjs
-npm run studio
-npm run studio:build
+```sh
+npm run studio       # Local Sanity editor
+npm run build        # Frontend + static HTML into dist/
+npm run preview      # Preview the frontend build
+npm run studio:build # Compile the Studio
 ```
 
-The frontend produces nine HTML routes plus a 404 page. Each route has content before JavaScript loads; same-origin navigation progressively uses brief native page transitions. Reduced-motion preferences disable decorative motion. There is no artificial loading screen.
+Available validation commands are `npm test` and `node scripts/check-build.mjs` after a build. See the existing CI workflow for required checks. Editing documentation does not require changing application code or dependencies.
 
-## CMS
+## How content reaches the website
 
-The Studio has editable identity/contact information, homepage copy, page introductions, projects, publications, milestones, partners and resources. Publications support a complete ordered author list, DOI, abstract, publisher URL and a permitted PDF upload. No missing publication data is invented.
+Sanity published content feeds the browser and build-time prerendering. Browser edits appear after refresh; rebuild the frontend to refresh static HTML and search/social metadata too. `frontend-ui/src/content.json` is a migration/offline fallback, not a substitute for a current CMS backup. Intentional empty collections are preserved.
 
-To import using your existing CLI login:
+| Setting | Value / use |
+| --- | --- |
+| Sanity project | `4isekt9n` |
+| Organization | `o6odkcj36` |
+| Dataset | `production` |
+| Studio | https://multiscale-ned-lab.sanity.studio/ |
+| Studio application ID | `be7c9nq12qsxff1zgzisoo1y` |
 
-```cmd
-cd cms-backend
-npx sanity exec seed/import.mjs --with-user-token
-npx sanity exec seed/import.mjs --with-user-token -- --apply
-```
+Content images, labels, page introductions, projects, expertise, papers, people, highlights and collaborators are editable in Studio. **Client content review is a review label; it does not hide a published item.** Empty News cards are placeholders, not announcements.
 
-The first command previews missing records. The second creates only missing records, uploads their images and preserves existing client edits. It refuses to target any project other than `4isekt9n`. Never delete the client-selected project.
+### Environment configuration
 
-To deploy the Studio:
+Use `.env.example` as a variable-name reference. Its older “NEW project” comment is obsolete: reuse the selected lab project.
 
-```cmd
-npx sanity deploy --url multiscale-ned-lab --yes
-```
+| Variable | Configuration |
+| --- | --- |
+| `VITE_SANITY_PROJECT_ID` | `4isekt9n` |
+| `VITE_SANITY_DATASET` | `production` |
+| `VITE_SITE_URL` | Actual HTTPS origin; update after the client domain is agreed |
+| `VITE_PUBLIC_INDEXING` | Keep `false` during review; enable after content/domain approval |
+| `VITE_WEB3FORMS_ACCESS_KEY` | Configure only after client recipient setup |
+| `SANITY_PROJECT_ID`, `SANITY_DATASET` | Terminal import configuration |
+| `SANITY_API_TOKEN` | Optional terminal-only import credential |
 
-A deployed Studio is an editor interface; the Content Lake backend is hosted by Sanity. No separate Vercel database/backend server is needed for this architecture.
+Never put an authentication token in a `VITE_` variable or commit credentials. GitHub Studio deployment uses the repository secret named `SANITY_AUTH_TOKEN`; its value is not part of the project documentation.
 
-## Frontend deployment
+## Project map
 
-Vercel repository root: `/`; install: `npm ci`; build: `npm run build`; output: `dist`. `vercel.json` includes required headers and redirects from the original PHP routes. Cloudflare equivalents are retained in public assets for portability.
+| Location | Responsibility |
+| --- | --- |
+| `frontend-ui/src/components`, `pages`, `hooks` | Interface, composition and interactions |
+| `frontend-ui/src/content.js` | Routes, CMS queries, normalization and safe URLs |
+| `frontend-ui/src/content.json` | Migration/offline fallback |
+| `frontend-ui/public` | Supplied assets, branding, redirects and headers |
+| `cms-backend/schemaTypes` | Content models |
+| `cms-backend/sanity.config.js` | Studio navigation and document controls |
+| `cms-backend/seed` | Import and content migrations; inspect before running |
+| `cms-backend/seed/media` | Six distinct conceptual research/expertise illustrations |
+| `scripts` | Build, metadata, branding and content import tools |
+| `tests`, `.github/workflows` | Validation and Studio deployment workflows |
+| `docs` | Content review, setup, asset provenance and ownership notes |
 
-- `VITE_SANITY_PROJECT_ID=4isekt9n`
-- `VITE_SANITY_DATASET=production`
-- `VITE_SITE_URL` is the actual deployed origin, later replaced by the client’s HTTPS domain.
-- `VITE_PUBLIC_INDEXING=false` during review. Enable it only after approved production content/domain; rebuilding then generates sitemap.xml and indexable metadata.
-- `VITE_WEB3FORMS_ACCESS_KEY` remains unset until the client verifies the recipient email. The form is disabled without it and makes no submission requests.
+The original PHP website is reference material, not the runtime. Older docs mention `source-reference/`; that directory is absent from this repository snapshot. Preserve the separately supplied original archive.
 
-Browser queries show published CMS edits after refresh. Rebuild after editorial changes so static HTML and social/search metadata also reflect them; a hosting rebuild webhook can be added after the final hosting arrangement is confirmed.
+## Deployment and ownership
 
-## Client handover
+Vercel uses repository root `/`, install `npm ci`, build `npm run build`, output `dist`, Node **24.x**. Review URL: https://multiscale-lab.vercel.app/ . Review indexing is disabled. The form stays inactive without its access key.
 
-Prefer client-owned Vercel and domain ownership before launch. Copy Git history to the client GitHub repository while retaining the original; reconnect the same Vercel project at handover. If the project is already live in the developer’s account, use Vercel’s project transfer flow. See `docs/OWNERSHIP-AND-HANDOVER.md` for permissions, domain continuity, repository copying and separate Sanity/Web3Forms ownership.
+Keep Sanity project `4isekt9n`; **do not create or delete a replacement project**. GitHub and Vercel ownership do not transfer Sanity memberships or form ownership. Client Vercel transfer, domain setup and Search Console ownership remain separate handover tasks. Do not assume Search Console is configured because metadata exists.
 
-See `docs/CONTENT-REVIEW.md` for missing source data and `docs/ASSETS-AND-MOTION.md` for asset provenance. The original supplied contact email/phone are no longer treated as confirmed public contact details. The client content questionnaire is provided as a separate editable Word document and printable PDF.
+## Read before changing the project
+
+- [Sanity setup](docs/SANITY-SETUP.md)
+- [Content requiring client confirmation](docs/CONTENT-REVIEW.md)
+- [Ownership and hosting handover](docs/OWNERSHIP-AND-HANDOVER.md)
+- [Launch checklist](docs/LAUNCH-CHECKLIST.md)
+- [Asset provenance and motion](docs/ASSETS-AND-MOTION.md)
+- [Earlier verification record](docs/VERIFICATION.md)
+
+**Evidence note, 24 November 2026:** the published dataset contained 48 content documents and 25 image assets, including three empty News records. Older notes reporting 22 records/eight images describe the initial import. The deployed homepage includes Open Graph image dimensions. Recheck live data before relying on these counts. No client approval or final launch is implied.
