@@ -112,3 +112,7 @@ Keep Sanity project `4isekt9n`; **do not create or delete a replacement project*
 - [Earlier verification record](docs/VERIFICATION.md)
 
 **Evidence note, 24 November 2026:** the published dataset contained 48 content documents and 25 image assets, including three empty News records. Older notes reporting 22 records/eight images describe the initial import. The deployed homepage includes Open Graph image dimensions. Recheck live data before relying on these counts. No client approval or final launch is implied.
+
+## Project documents
+
+[Open the handover, client guides and source materials](documents/README.md). Editable guides and PDFs are kept here so the local handover folder can stay small.

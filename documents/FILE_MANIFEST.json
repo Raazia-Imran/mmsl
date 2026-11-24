@@ -1,0 +1,140 @@
+[
+    {
+        "path":  "AI_RESUME_HERE.md",
+        "bytes":  3571,
+        "sha256":  "2242461083670e03af80a139b279bc74af6e94d4d7e8a5f1c057ab512f6edb98",
+        "git_blob":  "c4d67a339920f6b6a4a939d8347a2425d39a1367"
+    },
+    {
+        "path":  "AI_RESUME_HERE.pdf",
+        "bytes":  5423,
+        "sha256":  "9d58aedb5258d41580a760edbf3e78421ef7cbb7a4e6b0a467559cf0863b9b2c",
+        "git_blob":  "27f9ec3384ff9acc96c985724c71778206055349"
+    },
+    {
+        "path":  "evidence/published-content-2026-11-24.json",
+        "bytes":  103278,
+        "sha256":  "05cdf9600350f2def876ca307f2e7fbac043039c7fa858c62fdcb586f223fe63",
+        "git_blob":  "1f7df80992ba6c87c02704036c23ab6d9ad4928d"
+    },
+    {
+        "path":  "MMSL_Client_Hosting_Transfer.md",
+        "bytes":  8565,
+        "sha256":  "792aa7e82c7d695d6e3e45b409d2b62d0d3d391a2b86083c3a4509296592b5ba",
+        "git_blob":  "69d6ebcb7ce54cb64579bd96ea4790c7a8f5ed61"
+    },
+    {
+        "path":  "MMSL_Client_Hosting_Transfer.pdf",
+        "bytes":  11059,
+        "sha256":  "bf69b3649f7d8e6461e987f60c3ce806ca7b03d7d40ad43953605945a42792d7",
+        "git_blob":  "8bc207052473f95c200d9c4d68e4cc323eff2b15"
+    },
+    {
+        "path":  "MMSL_Project_Handover.md",
+        "bytes":  19547,
+        "sha256":  "2ebe62cf804e12b493d4f9f8c060656dbf9e473ecec16634b29e426097ed5943",
+        "git_blob":  "79967bc4bf6ff15d09ae9a38d9bf6c5368307c27"
+    },
+    {
+        "path":  "MMSL_Project_Handover.pdf",
+        "bytes":  22246,
+        "sha256":  "e75b1aca0951407135028eae92492d5a488f02abe602498b432ee1dd0fd43d1a",
+        "git_blob":  "ab7521f2844129e841da62dd76c88d446252e32d"
+    },
+    {
+        "path":  "README.md",
+        "bytes":  1869,
+        "sha256":  "c4ae37aa5337a15ce10f22d626ebb4b600724a01d318c04d75f9e3b48ff7331b",
+        "git_blob":  "6780953c760d1e31b2acaede8c64f25799ea533c"
+    },
+    {
+        "path":  "reference/local-cms-helpers/cms-address.mjs",
+        "bytes":  617,
+        "sha256":  "af53b1e227d2136fd0038ff3c5caf70aa97c636e5f763a835320a7830bb5cc7f",
+        "git_blob":  "45b7d96140f26dae64c9d1d1be1f83bfef08133f"
+    },
+    {
+        "path":  "reference/local-cms-helpers/cms-export.mjs",
+        "bytes":  2114,
+        "sha256":  "c70eac4f91c59b42f497f098841e0d23f516733898d799368cd04d565e85fabb",
+        "git_blob":  "b1edf1b02260c11374f9a8d97c4bcb36ba10ef6f"
+    },
+    {
+        "path":  "reference/MMSL_Client_Content_Request.docx",
+        "bytes":  38591,
+        "sha256":  "dafdf832457055a40606d7f096ac27bc5fe622c30b6c0ea8432bda970cdba7ea",
+        "git_blob":  "f2b63b82df529ab2858c81d379ea2fd9d2ba0519"
+    },
+    {
+        "path":  "reference/MMSL_Client_Content_Request.pdf",
+        "bytes":  74289,
+        "sha256":  "073ca4ed4c047cb1aca94b9a3c78e97d79206d4780e852021c7efbba64ced8fc",
+        "git_blob":  "a51a2f3241995bce5d85a3744b957ffc57c87046"
+    },
+    {
+        "path":  "reference/MMSL_Sanity_Content_Guide.docx",
+        "bytes":  38704,
+        "sha256":  "c727e12aa6f0ed75625fc63f6d55119928dd32cb5c86c05cbd46504a669e216a",
+        "git_blob":  "72e4c6940b75f4a8039d7ac69480502dca991f88"
+    },
+    {
+        "path":  "reference/MMSL_Website_Content_Required.docx",
+        "bytes":  37640,
+        "sha256":  "c476cc05aee751c253e6502d5e00ef969d89e517387b5fd4c806dfb1efdbccc4",
+        "git_blob":  "47ba993782b701206213e9280d78eeed695a60f3"
+    },
+    {
+        "path":  "reference/MMSL_Website_Overview.docx",
+        "bytes":  38467,
+        "sha256":  "abc99c22595493fee81f9499577df18d399396a0a9fe41de6ba0cc578a6a6bd6",
+        "git_blob":  "e6e41d19b2ef523fb6d5866de237319314167691"
+    },
+    {
+        "path":  "reference/MMSL_Website_Overview.pdf",
+        "bytes":  86037,
+        "sha256":  "c200f9cc45487469f3a903e252e3c92d8216c85e26e10ad0bdb19f364e210651",
+        "git_blob":  "79e2e21b85d435c47512ebb55563ec1a919006fe"
+    },
+    {
+        "path":  "reference/Multiscale_Lab_Client_Content_Form.docx",
+        "bytes":  218123,
+        "sha256":  "b102a238276682429b25eec5c2122abbdf1c95eecba35e20c7174c61feaf7843",
+        "git_blob":  "0de47eea16a7e032cb44a17f093564b8093ba89e"
+    },
+    {
+        "path":  "reference/Multiscale_Lab_Client_Content_Form.pdf",
+        "bytes":  229972,
+        "sha256":  "348be9958b580161e2129538db5268daa6bd62a312cfb450c1656384bb48e05f",
+        "git_blob":  "2fb596e6ae62507662768a62c3e6d6bffd636913"
+    },
+    {
+        "path":  "source-artwork/Crystal lattice to fluid ribbon.png",
+        "bytes":  2049233,
+        "sha256":  "b1c4348a81987f996a9d50a3b663c3e4c21e16566109c766e1bfe0d1b764dd7c",
+        "git_blob":  "615e993958ed0f1a804c9de257e6d0339fbf7e8a"
+    },
+    {
+        "path":  "source-artwork/Engineering science icon collection.png",
+        "bytes":  2342371,
+        "sha256":  "110d98a550d1353483b8e8e9bad5d82c4ad4f427320bc4610252ee10bbd3c6c0",
+        "git_blob":  "dccafad86b597c07ebd1ac5446836b800a9864f5"
+    },
+    {
+        "path":  "source-artwork/Fluid, structural, and molecular engineering icons.png",
+        "bytes":  901020,
+        "sha256":  "4f82575bd407c8e7b16a82e0798f47b43a95b7ffcb717eca6d314880911369a6",
+        "git_blob":  "64a93e1216389095afff744437081d5ea43afdd4"
+    },
+    {
+        "path":  "source-artwork/Microfluidics, carbon fiber, and steel.png",
+        "bytes":  3430871,
+        "sha256":  "4c7f1203ce2da93d878c65d82d005685f5e12aa8ef02d24714df48d498ceecf7",
+        "git_blob":  "2535899695376132e970f9ea5977fadfe22d2042"
+    },
+    {
+        "path":  "source-materials/multiscale-lab.rar",
+        "bytes":  1784546,
+        "sha256":  "905323c40ca74832c8830c85be53b794acefe921e3b0c4ebc45279b79a6d4a75",
+        "git_blob":  "52be4ce0af5caba42d947277618f39f24686826f"
+    }
+]
